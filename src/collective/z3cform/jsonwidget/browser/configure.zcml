@@ -1,0 +1,21 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    i18n_domain="collective.z3cform.jsonwidget">
+
+  <!-- Set overrides folder for Just-a-Bunch-Of-Templates product -->
+  <include package="z3c.jbot" file="meta.zcml" />
+  <browser:jbot
+      directory="overrides"
+      layer="collective.z3cform.jsonwidget.interfaces.ICollectiveZ3CformJsonwidgetLayer"
+      />
+
+  <!-- Publish static files -->
+  <plone:static
+      name="collective.z3cform.jsonwidget"
+      type="plone"
+      directory="static"
+      />
+
+</configure>
