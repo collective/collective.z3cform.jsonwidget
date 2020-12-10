@@ -1,0 +1,14 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      tal:omit-tag="">
+
+<div class="${view/klass}" data-schema="${view/get_schema}">
+    <textarea
+       class="widget-field"
+       id="${view/id}"
+       name="${view/name}"
+       tal:content="view/value" />
+    <div class="widget-wrapper" />
+</div>
+
+</html>
