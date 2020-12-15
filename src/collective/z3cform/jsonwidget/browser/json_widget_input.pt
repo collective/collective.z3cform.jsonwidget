@@ -1,13 +1,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       tal:omit-tag="">
-
 <div class="${view/klass}" data-schema="${view/get_schema}">
-    <textarea
+    <input type="text"
        class="widget-field"
        id="${view/id}"
        name="${view/name}"
-       tal:content="view/value" />
+       value="${view/value}" />
     <div class="widget-wrapper" />
 </div>
 

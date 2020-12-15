@@ -15,26 +15,28 @@ msgstr ""
 "Domain: DOMAIN\n"
 
 msgid "Add"
-msgstr ""
+msgstr "Aggiungi"
 
+#. Default: "Chiudi"
 msgid "Close"
-msgstr ""
+msgstr "Chiudi"
 
 #: collective/z3cform/jsonwidget/configure.zcml:27
 msgid "Installs the collective.z3cform.jsonwidget add-on."
 msgstr ""
 
+#. Default: "Carica altri"
 msgid "Load more"
-msgstr ""
+msgstr "Carica altri"
 
 msgid "Navigate through site structure and select one or more contents."
-msgstr ""
+msgstr "Naviga nel sito e seleziona uno o più contenuti."
 
 msgid "Select contents"
-msgstr ""
+msgstr "Seleziona contenuti"
 
 msgid "Select items"
-msgstr ""
+msgstr "Seleziona contenuti"
 
 #: collective/z3cform/jsonwidget/configure.zcml:36
 msgid "Uninstalls the collective.z3cform.jsonwidget add-on."

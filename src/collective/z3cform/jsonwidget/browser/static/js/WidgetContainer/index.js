@@ -1,27 +1,34 @@
-import React, { Component } from "react";
-import PropTypes from "prop-types";
-import WidgetDataContainer from "../WidgetDataContainer";
-import axios from "axios";
-import WidgetContext from "../utils/widgetContext";
-import arrayMove from "array-move";
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+import WidgetDataContainer from '../WidgetDataContainer';
+import axios from 'axios';
+import WidgetContext from '../utils/widgetContext';
+import { getTranslationCatalog } from '../utils/i18n';
+import arrayMove from 'array-move';
 
 class WidgetContainer extends Component {
   constructor(props) {
     super(props);
-    const value = JSON.parse(document.getElementById(props.fieldId).value);
+    const fieldValue = document.getElementById(props.fieldId).value;
+    const value = fieldValue.length > 0 ? JSON.parse(fieldValue) : [];
 
-    const updateWidgetField = (value) => {
+    this.getTranslationFor = msgid => {
+      const { translations } = this.state;
+      return translations[msgid] || msgid;
+    };
+
+    const updateWidgetField = value => {
       document.getElementById(this.props.fieldId).value = JSON.stringify(value);
     };
 
     this.addRow = () => {
-      let newValue = this.state.value.map((entry) => entry);
+      let newValue = this.state.value.map(entry => entry);
       let emptyRow = {};
       const { schema } = this.props;
-      schema.fieldsets[0].fields.forEach((fieldId) => {
+      schema.fieldsets[0].fields.forEach(fieldId => {
         const field = schema.fields[fieldId];
-        if (field.type === "string") {
-          emptyRow[fieldId] = "";
+        if (field.type === 'string') {
+          emptyRow[fieldId] = '';
         } else {
           emptyRow[fieldId] = [];
         }
@@ -34,7 +41,7 @@ class WidgetContainer extends Component {
       updateWidgetField(newValue);
     };
 
-    this.removeRow = (row) => {
+    this.removeRow = row => {
       let newValue = this.state.value.filter((entry, idx) => idx !== row);
       this.setState({
         ...this.state,
@@ -63,33 +70,38 @@ class WidgetContainer extends Component {
     this.state = {
       value,
       vocabularies: {},
+      translations: {},
       addRow: this.addRow,
       removeRow: this.removeRow,
       moveRow: this.moveRow,
       updateField: this.updateField,
+      getTranslationFor: this.getTranslationFor,
     };
-
+    // fetch translations
+    getTranslationCatalog().then(data => {
+      this.setState({ ...this.state, translations: data });
+    });
     // fetch vocabularies
     const { schema } = props;
     const fetches = [];
-    schema.fieldsets[0].fields.forEach((fieldId) => {
+    schema.fieldsets[0].fields.forEach(fieldId => {
       const field = schema.fields[fieldId];
       if (field.vocabulary) {
-        fetches.push({ id: fieldId, url: field.vocabulary["@id"] });
+        fetches.push({ id: fieldId, url: field.vocabulary['@id'] });
       }
       if (field.widgetOptions) {
         const { vocabulary } = field.widgetOptions;
         if (vocabulary) {
-          fetches.push({ id: fieldId, url: vocabulary["@id"] });
+          fetches.push({ id: fieldId, url: vocabulary['@id'] });
         }
       }
       Promise.all(
-        fetches.map((fetchItem) =>
+        fetches.map(fetchItem =>
           axios({
-            method: "GET",
+            method: 'GET',
             url: fetchItem.url,
-            headers: { Accept: "application/json" },
-          }).then((data) => {
+            headers: { Accept: 'application/json' },
+          }).then(data => {
             this.setState({
               ...this.state,
               vocabularies: {
@@ -97,8 +109,8 @@ class WidgetContainer extends Component {
                 [fetchItem.id]: data.data,
               },
             });
-          })
-        )
+          }),
+        ),
       );
     });
   }

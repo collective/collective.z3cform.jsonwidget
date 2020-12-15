@@ -2,14 +2,14 @@
     "name": "collective.z3cform.jsonwidget",
     "version": "0.1.0",
     "description": "z3cform json widget",
-    "main": "src/rer/sitesearch/browser/static/dist/main.js",
+    "main": "src/collective/z3cform/jsonwidget/browser/static/dist/main.js",
     "scripts": {
         "build": "webpack -p --mode production",
         "prepublishOnly": "yarn build",
         "start": "webpack-dev-server --mode development",
         "test": "jest"
     },
-    "repository": "git@github.com:RegioneEr/rer.sitesearch.git",
+    "repository": "git@github.com:collective/collective.z3cform.jsonwidget.git",
     "keywords": [
         "Plone",
         "Less",
@@ -78,6 +78,7 @@
         "plone-less-base": "git+https://git@github.com/RedTurtle/plone-less-base#master",
         "react": "^16.8.5",
         "react-dom": "^16.8.5",
+        "react-modal": "^3.12.1",
         "react-select": "^3.0.3"
     }
 }

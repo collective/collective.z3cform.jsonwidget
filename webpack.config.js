@@ -18,7 +18,7 @@ module.exports = (webpackEnv, argv) => {
   const isProduction = argv.mode === 'production';
   const pkgDir = path.resolve(
     __dirname,
-    './src/rer/sitesearch/browser/static/',
+    './src/collective/z3cform/jsonwidget/browser/static/',
   );
   const buildPath = isProduction
     ? path.resolve(pkgDir, './dist/prod')

@@ -1,20 +1,20 @@
-import React, { useContext } from "react";
-import PropTypes from "prop-types";
-import EntryColumnContainer from "../EntryColumnContainer";
-import WidgetContext from "../utils/widgetContext";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import React, { useContext } from 'react';
+import PropTypes from 'prop-types';
+import EntryColumnContainer from '../EntryColumnContainer';
+import WidgetContext from '../utils/widgetContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faPlus,
   faTrash,
   faArrowUp,
   faArrowDown,
-} from "@fortawesome/free-solid-svg-icons";
+} from '@fortawesome/free-solid-svg-icons';
 
-import "./index.less";
+import './index.less';
 
 const WidgetDataContainer = () => {
   const { value, schema, addRow, removeRow, moveRow } = useContext(
-    WidgetContext
+    WidgetContext,
   );
 
   return (
@@ -26,7 +26,7 @@ const WidgetDataContainer = () => {
               <button
                 className="standalone"
                 type="button"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   moveRow({ from: idx, to: idx + 1 });
                 }}
@@ -38,7 +38,7 @@ const WidgetDataContainer = () => {
               <button
                 className="standalone"
                 type="button"
-                onClick={(e) => {
+                onClick={e => {
                   e.preventDefault();
                   moveRow({ from: idx, to: idx - 1 });
                 }}
@@ -50,7 +50,7 @@ const WidgetDataContainer = () => {
             <button
               className="destructive"
               type="button"
-              onClick={(e) => {
+              onClick={e => {
                 e.preventDefault();
                 removeRow(idx);
               }}
@@ -58,7 +58,7 @@ const WidgetDataContainer = () => {
               <FontAwesomeIcon icon={faTrash} />
             </button>
           </div>
-          {schema.fieldsets[0].fields.map((fieldId) => (
+          {schema.fieldsets[0].fields.map(fieldId => (
             <EntryColumnContainer
               key={`${idx}-${fieldId}`}
               value={entry[fieldId]}
@@ -72,7 +72,7 @@ const WidgetDataContainer = () => {
         <button
           className="context"
           type="button"
-          onClick={(e) => {
+          onClick={e => {
             e.preventDefault();
             addRow();
           }}

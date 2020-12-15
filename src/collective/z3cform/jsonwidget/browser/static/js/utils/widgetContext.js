@@ -8,6 +8,7 @@ const WidgetContext = React.createContext({
   deleteRow: () => {},
   moveRow: () => {},
   updateField: () => {},
+  getTranslationFor: () => {},
 });
 
 export default WidgetContext;

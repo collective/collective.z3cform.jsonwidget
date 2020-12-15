@@ -10,6 +10,8 @@ from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import implementer_only
 from zope.schema.interfaces import IField
+from z3c.relationfield.schema import RelationChoice
+from plone import api
 
 import json
 
@@ -52,8 +54,15 @@ class JSONWidget(TextAreaWidget):
 
         # Include field modes
         for field in utils.iter_fields(fieldsets):
+            field_type = getattr(field.field, "value_type", "")
+            field_name = field.field.getName()
+            if isinstance(field_type, RelationChoice):
+                properties[field_name]["items"]["type"] = "relation"
+                properties[field_name]["items"]["root"] = "/".join(
+                    api.portal.get().getPhysicalPath()
+                )
             if field.mode:
-                properties[field.field.getName()]["mode"] = field.mode
+                properties[field_name]["mode"] = field.mode
 
         return json.dumps(
             {
