@@ -10,7 +10,7 @@ import {
   faHome,
   faTimes,
 } from '@fortawesome/free-solid-svg-icons';
-// import './index.less';
+import './ReferenceField.less';
 
 const ReferenceField = ({ value, id, row, items }) => {
   const { root } = items;
@@ -40,6 +40,9 @@ const ReferenceField = ({ value, id, row, items }) => {
   };
 
   const customStyles = {
+    overlay: {
+      zIndex: 1000,
+    },
     content: {
       top: '50%',
       left: '50%',
@@ -47,6 +50,9 @@ const ReferenceField = ({ value, id, row, items }) => {
       bottom: 'auto',
       marginRight: '-50%',
       transform: 'translate(-50%, -50%)',
+      zIndex: 1001,
+      maxHeight: '95vh',
+      overflow: 'hidden',
     },
   };
 
@@ -101,7 +107,6 @@ const ReferenceField = ({ value, id, row, items }) => {
         <div className="references">
           {value.map(ref => (
             <div key={`ref-${ref.UID}`} className="reference">
-              {ref.Title}
               <button
                 className="destructive"
                 type="button"
@@ -113,6 +118,7 @@ const ReferenceField = ({ value, id, row, items }) => {
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
+              <span>{ref.Title}</span>
             </div>
           ))}
         </div>
@@ -127,94 +133,94 @@ const ReferenceField = ({ value, id, row, items }) => {
         style={customStyles}
         ariaHideApp={false}
       >
-        <h2>{getTranslationFor('Select contents')}</h2>
-        <p className="discreet">
-          {getTranslationFor(
-            'Navigate through site structure and select one or more contents.',
-          )}
-        </p>
-        <button onClick={closeModal}>{getTranslationFor('Close')}</button>
+        <div className="modal-content-wrapper">
+          <h2>{getTranslationFor('Select contents')}</h2>
+          <p className="discreet">
+            {getTranslationFor(
+              'Navigate through site structure and select one or more contents.',
+            )}
+          </p>
+          <button onClick={closeModal}>{getTranslationFor('Close')}</button>
 
-        <div className="modal-breadcrumbs">
-          <a
-            className="breadcrumb home"
-            href="#"
-            onClick={e => {
-              e.preventDefault();
-              fetchData({ path: null });
-            }}
-          >
-            <FontAwesomeIcon icon={faHome} />
-          </a>
-          {modalData.breadcrumbs.map((breadcrumb, idx) => (
-            <React.Fragment key={`breadcrumb-${breadcrumb.UID}`}>
-              {' '}
-              /{' '}
-              <a
-                className="breadcrumb"
-                href="#"
-                onClick={e => {
-                  e.preventDefault();
-                  fetchData({
-                    path: breadcrumb.path,
-                    breadcrumbs: modalData.breadcrumbs.splice(idx + 1),
-                  });
-                }}
-              >
-                {breadcrumb.Title}
-              </a>
-            </React.Fragment>
-          ))}
-        </div>
-        <div>
-          {modalData.results.map(result => (
-            <div key={result.UID}>
-              <button
-                className="context"
-                type="button"
-                onClick={e => {
-                  e.preventDefault();
-                  onAddReference(result);
-                }}
-              >
-                <FontAwesomeIcon icon={faPlus} />
-              </button>
-              {result.Title}
-              {result.is_folderish && (
-                <button
-                  className="context"
-                  type="button"
-                  onClick={() => {
-                    let { breadcrumbs } = modalData;
-                    breadcrumbs.push({
-                      Title: result.Title,
-                      UID: result.UID,
-                      path: result.path,
+          <div className="modal-breadcrumbs">
+            <a
+              className="breadcrumb home"
+              href="#"
+              onClick={e => {
+                e.preventDefault();
+                fetchData({ path: null });
+              }}
+            >
+              <FontAwesomeIcon icon={faHome} />
+            </a>
+            {modalData.breadcrumbs.map((breadcrumb, idx) => (
+              <React.Fragment key={`breadcrumb-${breadcrumb.UID}`}>
+                {' '}
+                /{' '}
+                <a
+                  className="breadcrumb"
+                  href="#"
+                  onClick={e => {
+                    e.preventDefault();
+                    fetchData({
+                      path: breadcrumb.path,
+                      breadcrumbs: modalData.breadcrumbs.splice(idx + 1),
                     });
-                    fetchData({ path: result.path, breadcrumbs });
                   }}
                 >
-                  <FontAwesomeIcon icon={faChevronRight} />
+                  {breadcrumb.Title}
+                </a>
+              </React.Fragment>
+            ))}
+          </div>
+          <div className="content-results-wrapper">
+            {modalData.results.map(result => (
+              <div className="content-item" key={result.UID}>
+                <button
+                  type="button"
+                  onClick={e => {
+                    e.preventDefault();
+                    onAddReference(result);
+                  }}
+                >
+                  <FontAwesomeIcon icon={faPlus} />
                 </button>
-              )}
-            </div>
-          ))}
-        </div>
+                <span className="content-title">{result.Title}</span>
+                {result.is_folderish && (
+                  <button
+                    type="button"
+                    onClick={() => {
+                      let { breadcrumbs } = modalData;
+                      breadcrumbs.push({
+                        Title: result.Title,
+                        UID: result.UID,
+                        path: result.path,
+                      });
+                      fetchData({ path: result.path, breadcrumbs });
+                    }}
+                  >
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </button>
+                )}
+              </div>
+            ))}
+          </div>
 
-        {modalData.loaded < modalData.total && (
-          <button
-            className="context"
-            type="button"
-            onClick={() => {
-              fetchData({
-                path: modalData.path,
-                page: modalData.batchPage + 1,
-              });
-            }}
-          >
-            {getTranslationFor('Load more')}
-          </button>
-        )}
+          {modalData.loaded < modalData.total && (
+            <button
+              className="context"
+              type="button"
+              onClick={() => {
+                fetchData({
+                  path: modalData.path,
+                  page: modalData.batchPage + 1,
+                });
+              }}
+            >
+              {getTranslationFor('Load more')}
+            </button>
+          )}
+        </div>
       </Modal>
     </div>
   );
