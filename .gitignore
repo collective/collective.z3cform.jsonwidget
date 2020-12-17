@@ -18,6 +18,7 @@ node_modules/
 parts/
 src/*
 src/collective/z3cform/jsonwidget/browser/static/dist/dev/*
+src/collective/z3cform/jsonwidget/locales/__pycache__/
 test.plone_addon/
 var/
 # files

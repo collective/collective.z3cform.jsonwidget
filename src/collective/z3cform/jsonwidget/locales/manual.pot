@@ -37,3 +37,6 @@ msgstr ""
 
 msgid "Close"
 msgstr ""
+
+msgid "Group"
+msgstr ""

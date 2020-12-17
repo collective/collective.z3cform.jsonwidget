@@ -13,9 +13,14 @@ import {
 import './index.less';
 
 const WidgetDataContainer = () => {
-  const { value, schema, addRow, removeRow, moveRow } = useContext(
-    WidgetContext,
-  );
+  const {
+    value,
+    schema,
+    addRow,
+    removeRow,
+    moveRow,
+    getTranslationFor,
+  } = useContext(WidgetContext);
 
   return (
     <div className="data-wrapper">
@@ -46,7 +51,9 @@ const WidgetDataContainer = () => {
                 <FontAwesomeIcon icon={faArrowUp} />
               </button>
             )}
-            <strong>Row {idx + 1}</strong>
+            <strong>
+              {getTranslationFor('Group')} {idx + 1}
+            </strong>
             <button
               className="destructive"
               type="button"
@@ -77,7 +84,7 @@ const WidgetDataContainer = () => {
             addRow();
           }}
         >
-          <FontAwesomeIcon icon={faPlus} /> Add
+          <FontAwesomeIcon icon={faPlus} /> {getTranslationFor('Add')}
         </button>
       </div>
     </div>
