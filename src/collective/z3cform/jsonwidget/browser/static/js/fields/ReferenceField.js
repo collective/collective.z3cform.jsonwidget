@@ -24,6 +24,7 @@ const ReferenceField = ({ value, id, row, items }) => {
     path: root,
     breadcrumbs: [],
   });
+  const selectedUIDs = value ? value.map(item => item.UID) : [];
 
   const openModal = e => {
     e.preventDefault();
@@ -101,6 +102,7 @@ const ReferenceField = ({ value, id, row, items }) => {
   const afterOpenModal = () => {
     fetchData({ path: null });
   };
+
   return (
     <div className="reference-field-wrapper">
       {value.length > 0 && (
@@ -178,6 +180,7 @@ const ReferenceField = ({ value, id, row, items }) => {
               <div className="content-item" key={result.UID}>
                 <button
                   type="button"
+                  disabled={selectedUIDs.includes(result.UID)}
                   onClick={e => {
                     e.preventDefault();
                     onAddReference(result);
@@ -185,7 +188,13 @@ const ReferenceField = ({ value, id, row, items }) => {
                 >
                   <FontAwesomeIcon icon={faPlus} />
                 </button>
-                <span className="content-title">{result.Title}</span>
+                <span
+                  className={`content-title ${
+                    selectedUIDs.includes(result.UID) ? 'selected-item' : ''
+                  }`}
+                >
+                  {result.Title}
+                </span>
                 {result.is_folderish && (
                   <button
                     type="button"
