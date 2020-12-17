@@ -26,7 +26,6 @@ const LineField = ({ value, row, updateField }) => {
     <input
       type="text"
       className="input-line"
-      placeholder="lang|label"
       value={data.text}
       onChange={e => updateText(e.target.value)}
     />
@@ -34,7 +33,7 @@ const LineField = ({ value, row, updateField }) => {
 };
 
 const LinesField = ({ value, id, row }) => {
-  const { updateField } = useContext(WidgetContext);
+  const { updateField, getTranslationFor } = useContext(WidgetContext);
   const onUpdateRow = data => {
     const newValue = value.map((rowText, rowIdx) => {
       if (rowIdx === data.row) {
@@ -83,7 +82,7 @@ const LinesField = ({ value, id, row }) => {
         </div>
       ))}
       <button className="context" type="button" onClick={onAddRow}>
-        <FontAwesomeIcon icon={faPlus} /> Add
+        <FontAwesomeIcon icon={faPlus} /> {getTranslationFor('Add')}
       </button>
     </div>
   );
