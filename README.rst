@@ -6,25 +6,70 @@
 collective.z3cform.jsonwidget
 =============================
 
-Tell me what your product does
+z3c.form widget to manage a json field.
 
 Features
 --------
 
-- Can be bullet points
+- Customizable schema
+
+Usage
+-----
+
+You need to set the widget to needed fields into your form instance::
+
+    from collective.z3cform.jsonwidget.browser.widget import JSONFieldWidget
+    from zope.interface import Interface
+    from zope import schema
 
 
-Examples
---------
+    class IMyJsonSchema(Interface):
+        first = schema.TextLine(
+            title='first field',
+            required=True,
+        )
+        second = schema.List(
+            title="second field",
+            required=False,
+            value_type=schema.TextLine(),
+        )
 
-This add-on can be seen in action at the following sites:
-- Is there a page on the internet where everybody can see the features?
+    class IFormSchema(Interface):
+        my_json_field = schema.SourceText(
+            title="The field with some stored json values"
+        )
+
+    class MyForm(Form):
+
+        ...
+        schema = IFormSchema
+        fields = field.Fields(IFormSchema)
+        fields["my_json_field"].widgetFactory = JSONFieldWidget
+
+        def updateWidgets(self):
+            """
+            """
+            super(MyForm, self).updateWidgets()
+            self.widgets["my_json_field"].schema = IMyJsonSchema
 
 
-Documentation
--------------
+With this configuration, we are setting **JSONFieldWidget** widget to **my_json_field** field and
+setting the fields schema defined in **IMyJsonSchema** interface.
 
-Full documentation for end users can be found in the "docs" folder, and is also available online at http://docs.plone.org/foo/bar
+In the field are stored a list of json objects where each object has a set of fields defined in the schema.
+
+For example for the given configuration, we are going to store into the field something like::
+
+    [
+        {
+            "first": "a string",
+            "second": [1,2,3,4]
+        },
+        {
+            "first": "another string",
+            "second": ["a", "b", "c"]
+        },
+    ]
 
 
 Translations
@@ -32,7 +77,7 @@ Translations
 
 This product has been translated into
 
-- Klingon (thanks, K'Plai)
+- Italian
 
 
 Installation
@@ -56,17 +101,23 @@ Contribute
 
 - Issue Tracker: https://github.com/collective/collective.z3cform.jsonwidget/issues
 - Source Code: https://github.com/collective/collective.z3cform.jsonwidget
-- Documentation: https://docs.plone.org/foo/bar
 
 
-Support
+Credits
 -------
 
-If you are having issues, please let us know.
-We have a mailing list located at: project@example.com
+Developed with the support of `Regione Emilia Romagna`__;
 
+Regione Emilia Romagna supports the `PloneGov initiative`__.
 
-License
+__ http://www.regione.emilia-romagna.it/
+__ http://www.plonegov.it/
+
+Authors
 -------
 
-The project is licensed under the GPLv2.
+This product was developed by RedTurtle Technology team.
+
+.. image:: http://www.redturtle.net/redturtle_banner.png
+   :alt: RedTurtle Technology Site
+   :target: http://www.redturtle.net/
