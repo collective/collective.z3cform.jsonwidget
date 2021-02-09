@@ -7,3 +7,5 @@ include *.js
 include *.json
 include *.lock
 include *.txt
+exclude .babelrc
+exclude .nvmrc
