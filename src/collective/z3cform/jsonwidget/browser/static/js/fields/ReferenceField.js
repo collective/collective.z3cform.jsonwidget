@@ -120,7 +120,19 @@ const ReferenceField = ({ value, id, row, items }) => {
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
-              <span>{ref.Title}</span>
+              <a
+                href={ref.getURL}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {ref.Title}
+              </a>
+              <span
+                className="discreet"
+                style={{ marginLeft: '1rem', display: 'inline-block' }}
+              >
+                {ref.path}
+              </span>
             </div>
           ))}
         </div>
