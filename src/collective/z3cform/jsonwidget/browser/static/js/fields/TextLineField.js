@@ -1,21 +1,37 @@
-import React from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
+import WidgetContext from '../utils/widgetContext';
 
-// import './index.less';
+const TextLineField = ({ value, id, row }) => {
+  const { updateField } = useContext(WidgetContext);
+  const [data, setData] = useState({ text: '', timeout: 0 });
 
-const TextLineField = ({ value }) => {
+  const updateText = targetValue => {
+    if (data.timeout) {
+      clearInterval(data.timeout);
+    }
+    const timeout = setTimeout(() => {
+      updateField({ row, id, value: targetValue });
+    }, 1000);
+    setData({ text: targetValue, timeout });
+  };
+
+  useEffect(() => {
+    setData({ text: value, timeout: 0 });
+  }, [value]);
+
   return (
     <input
       type="text"
-      value={value}
-      onChange={() => {
-        console.log('cambiato');
-      }}
+      value={data.text}
+      onChange={e => updateText(e.target.value)}
     />
   );
 };
 TextLineField.propTypes = {
   value: PropTypes.string,
+  id: PropTypes.string,
+  row: PropTypes.number,
 };
 
 export default TextLineField;
