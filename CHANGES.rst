@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.1.1 (unreleased)
+0.2.0 (2021-05-17)
 ------------------
 
 - Add link and path to referenced items
