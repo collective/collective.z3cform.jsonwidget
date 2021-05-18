@@ -31,6 +31,7 @@ const WidgetDataContainer = () => {
               <button
                 className="standalone"
                 type="button"
+                title={getTranslationFor('Move down', 'Move down')}
                 onClick={e => {
                   e.preventDefault();
                   moveRow({ from: idx, to: idx + 1 });
@@ -43,6 +44,7 @@ const WidgetDataContainer = () => {
               <button
                 className="standalone"
                 type="button"
+                title={getTranslationFor('Move up', 'Move up')}
                 onClick={e => {
                   e.preventDefault();
                   moveRow({ from: idx, to: idx - 1 });
@@ -57,6 +59,7 @@ const WidgetDataContainer = () => {
             <button
               className="destructive"
               type="button"
+              title={getTranslationFor('Delete', 'Delete')}
               onClick={e => {
                 e.preventDefault();
                 removeRow(idx);

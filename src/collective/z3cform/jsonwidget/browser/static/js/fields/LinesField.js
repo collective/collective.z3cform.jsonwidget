@@ -75,6 +75,7 @@ const LinesField = ({ value, id, row }) => {
                 e.preventDefault();
                 onDeleteRow(idx);
               }}
+              title={getTranslationFor('Delete')}
             >
               <FontAwesomeIcon icon={faTrash} />
             </button>

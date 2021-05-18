@@ -40,3 +40,15 @@ msgstr ""
 
 msgid "Group"
 msgstr ""
+
+msgid "Delete"
+msgstr ""
+
+msgid "Expand"
+msgstr ""
+
+msgid "Move down"
+msgstr ""
+
+msgid "Move up"
+msgstr ""

@@ -24,6 +24,18 @@ msgstr "Chiudi"
 msgid "Group"
 msgstr "Gruppo"
 
+msgid "Delete"
+msgstr "Elimina"
+
+msgid "Expand"
+msgstr "Espandi"
+
+msgid "Move down"
+msgstr "Sposta sotto"
+
+msgid "Move up"
+msgstr "Sposta sopra"
+
 #: collective/z3cform/jsonwidget/configure.zcml:27
 msgid "Installs the collective.z3cform.jsonwidget add-on."
 msgstr ""

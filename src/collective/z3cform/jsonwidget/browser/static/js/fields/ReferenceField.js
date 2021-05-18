@@ -117,14 +117,11 @@ const ReferenceField = ({ value, id, row, items }) => {
                   const newValue = value.filter(val => val.UID !== ref.UID);
                   updateField({ row, id, value: newValue });
                 }}
+                title={getTranslationFor('Delete')}
               >
                 <FontAwesomeIcon icon={faTimes} />
               </button>
-              <a
-                href={ref.getURL}
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href={ref.getURL} target="_blank" rel="noopener noreferrer">
                 {ref.Title}
               </a>
               <span
@@ -164,6 +161,7 @@ const ReferenceField = ({ value, id, row, items }) => {
                 e.preventDefault();
                 fetchData({ path: null });
               }}
+              title="Home"
             >
               <FontAwesomeIcon icon={faHome} />
             </a>
@@ -197,6 +195,7 @@ const ReferenceField = ({ value, id, row, items }) => {
                     e.preventDefault();
                     onAddReference(result);
                   }}
+                  title={getTranslationFor('Add')}
                 >
                   <FontAwesomeIcon icon={faPlus} />
                 </button>
@@ -219,6 +218,7 @@ const ReferenceField = ({ value, id, row, items }) => {
                       });
                       fetchData({ path: result.path, breadcrumbs });
                     }}
+                    title={getTranslationFor('Expand')}
                   >
                     <FontAwesomeIcon icon={faChevronRight} />
                   </button>
