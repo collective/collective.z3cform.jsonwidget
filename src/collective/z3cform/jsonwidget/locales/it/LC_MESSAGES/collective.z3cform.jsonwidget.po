@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2020-12-17 10:12+0000\n"
+"POT-Creation-Date: 2021-05-18 10:06+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -21,28 +21,28 @@ msgstr "Aggiungi"
 msgid "Close"
 msgstr "Chiudi"
 
-msgid "Group"
-msgstr "Gruppo"
-
 msgid "Delete"
 msgstr "Elimina"
 
 msgid "Expand"
 msgstr "Espandi"
 
-msgid "Move down"
-msgstr "Sposta sotto"
+msgid "Group"
+msgstr "Gruppo"
 
-msgid "Move up"
-msgstr "Sposta sopra"
-
-#: collective/z3cform/jsonwidget/configure.zcml:27
+#: ../configure.zcml:27
 msgid "Installs the collective.z3cform.jsonwidget add-on."
 msgstr ""
 
 #. Default: "Carica altri"
 msgid "Load more"
 msgstr "Carica altri"
+
+msgid "Move down"
+msgstr "Sposta sotto"
+
+msgid "Move up"
+msgstr "Sposta sopra"
 
 msgid "Navigate through site structure and select one or more contents."
 msgstr "Naviga nel sito e seleziona uno o più contenuti."
@@ -53,14 +53,14 @@ msgstr "Seleziona contenuti"
 msgid "Select items"
 msgstr "Seleziona contenuti"
 
-#: collective/z3cform/jsonwidget/configure.zcml:36
+#: ../configure.zcml:36
 msgid "Uninstalls the collective.z3cform.jsonwidget add-on."
 msgstr ""
 
-#: collective/z3cform/jsonwidget/configure.zcml:27
+#: ../configure.zcml:27
 msgid "collective.z3cform.jsonwidget"
 msgstr ""
 
-#: collective/z3cform/jsonwidget/configure.zcml:36
+#: ../configure.zcml:36
 msgid "collective.z3cform.jsonwidget (uninstall)"
 msgstr ""
