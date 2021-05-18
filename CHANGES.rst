@@ -5,7 +5,9 @@ Changelog
 0.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add alt text on buttons
+- Add locales for a11y hints
+  [nzambello]
 
 
 0.2.0 (2021-05-17)
