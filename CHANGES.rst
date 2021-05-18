@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.1 (unreleased)
+0.2.1 (2021-05-18)
 ------------------
 
 - Add alt text on buttons
