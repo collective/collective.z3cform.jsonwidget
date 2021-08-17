@@ -12,6 +12,46 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import './ReferenceField.less';
 
+const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
+  <div className="modal-breadcrumbs">
+    <a
+      className="breadcrumb home"
+      href="#"
+      onClick={e => {
+        e.preventDefault();
+        fetchData({ path: null });
+      }}
+      title="Home"
+    >
+      <FontAwesomeIcon icon={faHome} />
+    </a>
+    {breadcrumbs.map((breadcrumb, idx) => (
+      <React.Fragment key={`breadcrumb-${breadcrumb.UID}`}>
+        {' '}
+        /{' '}
+        {idx + 1 < breadcrumbs.length ? (
+          <a
+            className="breadcrumb"
+            href="#"
+            onClick={e => {
+              e.preventDefault();
+              const newBreadcrumbs = JSON.parse(JSON.stringify(breadcrumbs));
+              fetchData({
+                path: breadcrumb.path,
+                breadcrumbs: newBreadcrumbs.slice(0, idx + 1),
+              });
+            }}
+          >
+            {breadcrumb.Title}
+          </a>
+        ) : (
+          <span>{breadcrumb.Title}</span>
+        )}
+      </React.Fragment>
+    ))}
+  </div>
+);
+
 const ReferenceField = ({ value, id, row, items }) => {
   const { root } = items;
   const { updateField, getTranslationFor } = useContext(WidgetContext);
@@ -25,7 +65,6 @@ const ReferenceField = ({ value, id, row, items }) => {
     breadcrumbs: [],
   });
   const selectedUIDs = value ? value.map(item => item.UID) : [];
-
   const openModal = e => {
     e.preventDefault();
     setModalOpenState(true);
@@ -57,7 +96,7 @@ const ReferenceField = ({ value, id, row, items }) => {
     },
   };
 
-  const fetchData = ({ path = null, page = 1, breadcrumbs = [] }) => {
+  const fetchData = ({ path = null, page = 1, breadcrumbs = null }) => {
     const portalUrl = document.body.getAttribute('data-base-url');
     const queryPath = path ? `${root}${path}` : `${root}`;
     const batchSize = 10;
@@ -83,10 +122,16 @@ const ReferenceField = ({ value, id, row, items }) => {
         headers: { Accept: 'application/json' },
       })
       .then(data => {
-        const newLoaded = modalData.loaded + batchSize;
+        let newLoaded;
+        if (page == 1) {
+          // first page
+          newLoaded = batchSize;
+        } else {
+          newLoaded = modalData.loaded + batchSize;
+        }
         setModalData({
           ...modalData,
-          breadcrumbs,
+          breadcrumbs: breadcrumbs || modalData.breadcrumbs,
           results:
             page > 1
               ? modalData.results.concat(data.data.results)
@@ -153,38 +198,10 @@ const ReferenceField = ({ value, id, row, items }) => {
           </p>
           <button onClick={closeModal}>{getTranslationFor('Close')}</button>
 
-          <div className="modal-breadcrumbs">
-            <a
-              className="breadcrumb home"
-              href="#"
-              onClick={e => {
-                e.preventDefault();
-                fetchData({ path: null });
-              }}
-              title="Home"
-            >
-              <FontAwesomeIcon icon={faHome} />
-            </a>
-            {modalData.breadcrumbs.map((breadcrumb, idx) => (
-              <React.Fragment key={`breadcrumb-${breadcrumb.UID}`}>
-                {' '}
-                /{' '}
-                <a
-                  className="breadcrumb"
-                  href="#"
-                  onClick={e => {
-                    e.preventDefault();
-                    fetchData({
-                      path: breadcrumb.path,
-                      breadcrumbs: modalData.breadcrumbs.splice(idx + 1),
-                    });
-                  }}
-                >
-                  {breadcrumb.Title}
-                </a>
-              </React.Fragment>
-            ))}
-          </div>
+          <Breadcrumbs
+            fetchData={fetchData}
+            breadcrumbs={modalData.breadcrumbs}
+          />
           <div className="content-results-wrapper">
             {modalData.results.map(result => (
               <div className="content-item" key={result.UID}>
@@ -246,6 +263,12 @@ const ReferenceField = ({ value, id, row, items }) => {
     </div>
   );
 };
+
+Breadcrumbs.propTypes = {
+  breadcrumbs: PropTypes.array,
+  fetchData: PropTypes.func,
+};
+
 ReferenceField.propTypes = {
   items: PropTypes.object,
   value: PropTypes.array,

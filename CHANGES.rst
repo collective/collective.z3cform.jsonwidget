@@ -5,7 +5,8 @@ Changelog
 0.2.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix breadcrumbs and pagination in ReferenceField.
+  [cekk]
 
 
 0.2.1 (2021-05-18)
