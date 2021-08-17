@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.2 (unreleased)
+0.2.2 (2021-08-17)
 ------------------
 
 - Fix breadcrumbs and pagination in ReferenceField.

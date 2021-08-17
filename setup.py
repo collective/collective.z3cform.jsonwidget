@@ -14,7 +14,7 @@ long_description = '\n\n'.join([
 
 setup(
     name='collective.z3cform.jsonwidget',
-    version='0.2.2.dev0',
+    version='0.2.2',
     description="Custom widget to manage complex json data stored into a text field",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
