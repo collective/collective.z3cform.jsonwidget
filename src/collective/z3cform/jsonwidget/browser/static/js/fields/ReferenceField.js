@@ -19,7 +19,7 @@ const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
       href="#"
       onClick={e => {
         e.preventDefault();
-        fetchData({ path: null });
+        fetchData({ path: null, breadcrumbs: [] });
       }}
       title="Home"
     >

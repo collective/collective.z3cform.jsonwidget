@@ -5,7 +5,8 @@ Changelog
 0.2.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix homepage breadcrumb.
+  [cekk]
 
 
 0.2.2 (2021-08-17)
