@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.4 (unreleased)
+0.2.4 (2021-12-13)
 ------------------
 
 - Fix defaulValue in select fields. Now we can also reset the values.
