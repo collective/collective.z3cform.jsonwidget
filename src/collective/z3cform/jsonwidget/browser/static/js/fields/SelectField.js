@@ -14,24 +14,25 @@ const SelectField = ({ value, id, row, multi }) => {
   const options = vocab.items.map(item => {
     return { value: item.token, label: item.title };
   });
+  const selectValue = options.filter(option => {
+    if (Array.isArray(value)) {
+      return value.includes(option.value);
+    } else {
+      return value === option.value;
+    }
+  });
   return (
     <Select
       isMulti={multi ? true : false}
       isClearable={true}
-      value={options.filter(option => {
-        if (Array.isArray(value)) {
-          return value.includes(option.value);
-        } else {
-          return value === option.value;
-        }
-      })}
+      defaultValue={selectValue}
       options={options}
       onChange={option => {
         let newValue = null;
         if (Array.isArray(value)) {
-          newValue = option.map(item => item.value);
+          newValue = option ? option.map(item => item.value) : [];
         } else {
-          newValue = option.value;
+          newValue = option ? option.value : '';
         }
         updateField({ row, id, value: newValue });
       }}

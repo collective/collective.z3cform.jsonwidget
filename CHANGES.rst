@@ -5,8 +5,8 @@ Changelog
 0.2.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Fix defaulValue in select fields. Now we can also reset the values.
+  [cekk]
 
 0.2.3 (2021-08-18)
 ------------------
