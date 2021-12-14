@@ -5,7 +5,8 @@ Changelog
 0.2.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Improve widget usability.
+  [cekk]
 
 
 0.2.4 (2021-12-13)

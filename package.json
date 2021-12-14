@@ -77,6 +77,7 @@
         "axios": "^0.21.0",
         "plone-less-base": "git+https://git@github.com/RedTurtle/plone-less-base#master",
         "react": "^16.8.5",
+        "react-collapse": "^5.1.1",
         "react-dom": "^16.8.5",
         "react-modal": "^3.12.1",
         "react-select": "^3.0.3"

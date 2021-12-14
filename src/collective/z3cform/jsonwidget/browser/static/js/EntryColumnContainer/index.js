@@ -35,7 +35,7 @@ const EntryColumnContainer = props => {
     }
   }
   return (
-    <div className="column">
+    <div className="column block">
       <label>{title}</label>
       <p className="discreet">{description}</p>
       {Field}
