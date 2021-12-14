@@ -215,7 +215,11 @@ const ReferenceField = ({ value, id, row, items }) => {
         style={customStyles}
         ariaHideApp={false}
       >
-        <button className="close" onClick={closeModal}>
+        <button
+          className="close"
+          onClick={closeModal}
+          title={getTranslationFor('Close')}
+        >
           <FontAwesomeIcon icon={faTimes} />
         </button>
         <div className="modal-content-wrapper">
