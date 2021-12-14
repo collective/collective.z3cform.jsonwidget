@@ -9,6 +9,7 @@ import {
   faHome,
   faTimes,
   faTrash,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './ReferenceField.less';
@@ -58,15 +59,15 @@ const ItemElement = ({ isSelected, result, onAddReference }) => {
 
   if (isSelected) {
     return (
-      <span className={`content-title ${isSelected ? 'selected-item' : ''}`}>
-        {result.Title}
+      <span className="content-title">
+        {result.Title} <FontAwesomeIcon icon={faCheckCircle} />
       </span>
     );
   }
   return (
     <a
       href="#"
-      className={`content-title ${isSelected ? 'selected-item' : ''}`}
+      className="content-title"
       title={getTranslationFor('Add') + ' ' + result.Title}
       onClick={e => {
         e.preventDefault();
@@ -235,32 +236,40 @@ const ReferenceField = ({ value, id, row, items }) => {
             breadcrumbs={modalData.breadcrumbs}
           />
           <div className="content-results-wrapper">
-            {modalData.results.map(result => (
-              <div className="content-item" key={result.UID}>
-                <ItemElement
-                  isSelected={selectedUIDs.includes(result.UID)}
-                  result={result}
-                  onAddReference={onAddReference}
-                />
-                {result.is_folderish && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      let { breadcrumbs } = modalData;
-                      breadcrumbs.push({
-                        Title: result.Title,
-                        UID: result.UID,
-                        path: result.path,
-                      });
-                      fetchData({ path: result.path, breadcrumbs });
-                    }}
-                    title={getTranslationFor('Expand')}
-                  >
-                    <FontAwesomeIcon icon={faChevronRight} />
-                  </button>
-                )}
-              </div>
-            ))}
+            {modalData.results.map(result => {
+              const isSelected = selectedUIDs.includes(result.UID);
+              return (
+                <div
+                  className={`content-item ${
+                    isSelected ? 'selected-item' : ''
+                  }`}
+                  key={result.UID}
+                >
+                  <ItemElement
+                    isSelected={isSelected}
+                    result={result}
+                    onAddReference={onAddReference}
+                  />
+                  {result.is_folderish && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        let { breadcrumbs } = modalData;
+                        breadcrumbs.push({
+                          Title: result.Title,
+                          UID: result.UID,
+                          path: result.path,
+                        });
+                        fetchData({ path: result.path, breadcrumbs });
+                      }}
+                      title={getTranslationFor('Expand')}
+                    >
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {modalData.loaded < modalData.total && (
