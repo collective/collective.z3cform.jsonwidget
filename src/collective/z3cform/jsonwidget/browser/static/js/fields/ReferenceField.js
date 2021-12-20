@@ -6,10 +6,12 @@ import Modal from 'react-modal';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
   faChevronRight,
-  faPlus,
   faHome,
   faTimes,
+  faTrash,
+  faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
+
 import './ReferenceField.less';
 
 const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
@@ -51,6 +53,31 @@ const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
     ))}
   </div>
 );
+
+const ItemElement = ({ isSelected, result, onAddReference }) => {
+  const { getTranslationFor } = useContext(WidgetContext);
+
+  if (isSelected) {
+    return (
+      <span className="content-title">
+        {result.Title} <FontAwesomeIcon icon={faCheckCircle} />
+      </span>
+    );
+  }
+  return (
+    <a
+      href="#"
+      className="content-title"
+      title={getTranslationFor('Add') + ' ' + result.Title}
+      onClick={e => {
+        e.preventDefault();
+        onAddReference(result);
+      }}
+    >
+      {result.Title}
+    </a>
+  );
+};
 
 const ReferenceField = ({ value, id, row, items }) => {
   const { root } = items;
@@ -164,7 +191,7 @@ const ReferenceField = ({ value, id, row, items }) => {
                 }}
                 title={getTranslationFor('Delete')}
               >
-                <FontAwesomeIcon icon={faTimes} />
+                <FontAwesomeIcon icon={faTrash} />
               </button>
               <a href={ref.getURL} target="_blank" rel="noopener noreferrer">
                 {ref.Title}
@@ -189,6 +216,13 @@ const ReferenceField = ({ value, id, row, items }) => {
         style={customStyles}
         ariaHideApp={false}
       >
+        <button
+          className="close"
+          onClick={closeModal}
+          title={getTranslationFor('Close')}
+        >
+          <FontAwesomeIcon icon={faTimes} />
+        </button>
         <div className="modal-content-wrapper">
           <h2>{getTranslationFor('Select contents')}</h2>
           <p className="discreet">
@@ -196,52 +230,46 @@ const ReferenceField = ({ value, id, row, items }) => {
               'Navigate through site structure and select one or more contents.',
             )}
           </p>
-          <button onClick={closeModal}>{getTranslationFor('Close')}</button>
 
           <Breadcrumbs
             fetchData={fetchData}
             breadcrumbs={modalData.breadcrumbs}
           />
           <div className="content-results-wrapper">
-            {modalData.results.map(result => (
-              <div className="content-item" key={result.UID}>
-                <button
-                  type="button"
-                  disabled={selectedUIDs.includes(result.UID)}
-                  onClick={e => {
-                    e.preventDefault();
-                    onAddReference(result);
-                  }}
-                  title={getTranslationFor('Add')}
-                >
-                  <FontAwesomeIcon icon={faPlus} />
-                </button>
-                <span
-                  className={`content-title ${
-                    selectedUIDs.includes(result.UID) ? 'selected-item' : ''
+            {modalData.results.map(result => {
+              const isSelected = selectedUIDs.includes(result.UID);
+              return (
+                <div
+                  className={`content-item ${
+                    isSelected ? 'selected-item' : ''
                   }`}
+                  key={result.UID}
                 >
-                  {result.Title}
-                </span>
-                {result.is_folderish && (
-                  <button
-                    type="button"
-                    onClick={() => {
-                      let { breadcrumbs } = modalData;
-                      breadcrumbs.push({
-                        Title: result.Title,
-                        UID: result.UID,
-                        path: result.path,
-                      });
-                      fetchData({ path: result.path, breadcrumbs });
-                    }}
-                    title={getTranslationFor('Expand')}
-                  >
-                    <FontAwesomeIcon icon={faChevronRight} />
-                  </button>
-                )}
-              </div>
-            ))}
+                  <ItemElement
+                    isSelected={isSelected}
+                    result={result}
+                    onAddReference={onAddReference}
+                  />
+                  {result.is_folderish && (
+                    <button
+                      type="button"
+                      onClick={() => {
+                        let { breadcrumbs } = modalData;
+                        breadcrumbs.push({
+                          Title: result.Title,
+                          UID: result.UID,
+                          path: result.path,
+                        });
+                        fetchData({ path: result.path, breadcrumbs });
+                      }}
+                      title={getTranslationFor('Expand')}
+                    >
+                      <FontAwesomeIcon icon={faChevronRight} />
+                    </button>
+                  )}
+                </div>
+              );
+            })}
           </div>
 
           {modalData.loaded < modalData.total && (
@@ -274,6 +302,12 @@ ReferenceField.propTypes = {
   value: PropTypes.array,
   id: PropTypes.string,
   row: PropTypes.number,
+};
+
+ItemElement.propTypes = {
+  isSelected: PropTypes.bool,
+  result: PropTypes.object,
+  onAddReference: PropTypes.func,
 };
 
 export default ReferenceField;

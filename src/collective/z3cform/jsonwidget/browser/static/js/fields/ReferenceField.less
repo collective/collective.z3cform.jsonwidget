@@ -3,6 +3,7 @@
         margin-bottom: 1rem;
 
         .reference {
+            margin-bottom: 5px;
             button {
                 margin-right: 0.5rem;
             }
@@ -10,32 +11,46 @@
     }
 }
 
-.modal-content-wrapper {
-    .modal-breadcrumbs {
-        margin: 0.5rem 0;
+.ReactModalPortal {
+    button.close {
+        float: right;
     }
 
-    .content-results-wrapper {
-        max-height: calc(95vh - 300px);
-        overflow: scroll;
-        margin: 2rem 0;
-
-        .content-item {
+    .modal-content-wrapper {
+        .modal-breadcrumbs {
             margin: 0.5rem 0;
-            display: flex;
-            align-items: center;
+        }
 
-            span.content-title {
-                margin-right: auto;
-                margin-left: 0.5rem;
+        .content-results-wrapper {
+            max-height: calc(95vh - 300px);
+            overflow: scroll;
+            margin: 2rem 0;
 
-                &.selected-item {
-                    opacity: 0.6;
+            .content-item {
+                margin: 0.5rem 0;
+                display: flex;
+                align-items: center;
+                min-height: 36px;
+                border-bottom: 1px solid #ccc;
+                padding: 0.5rem 0;
+                .content-title {
+                    margin-right: auto;
+                    margin-left: 0.5rem;
                 }
-            }
 
-            button {
-                font-size: 1.5rem;
+                button {
+                    font-size: 1.5rem;
+                    background: transparent;
+                    border: none;
+                    &:hover,
+                    &:focus {
+                        background-color: #ccc;
+                    }
+                }
+
+                // &.selected-item {
+                //     background-color: #efefef;
+                // }
             }
         }
     }

@@ -1,40 +1,34 @@
 .json-textarea-widget {
-    background-color: #ccc;
-
     .data-wrapper {
         .json-row {
-            padding: 10px;
             margin: 10px;
             background-color: #fff;
+            border: 1px solid #ccc;
+            button {
+                font-size: 1.5rem;
 
+                + strong {
+                    margin-left: 1.5rem;
+                }
+            }
             .row-header {
                 display: flex;
+                padding: 10px;
                 align-items: center;
-                margin-bottom: 2rem;
-
-                button.standalone {
-                    font-size: 1.5rem;
-
-                    + button.standalone {
-                        margin-left: 0.5rem;
-                    }
-
-                    + strong {
-                        margin-left: 1.5rem;
-                    }
-                }
-
-                button.disruptive {
-                    font-size: 1.5rem;
-                }
+                background-color: #f3f3f3;
 
                 strong {
                     margin-right: auto;
                 }
+                .actions button {
+                    margin-left: 0.5rem;
+                }
             }
-
-            > .column {
-                margin-bottom: 3rem;
+            .row-content {
+                padding: 0 1rem 1rem;
+                .column.block {
+                    padding-top: 1.5rem;
+                }
             }
         }
 
