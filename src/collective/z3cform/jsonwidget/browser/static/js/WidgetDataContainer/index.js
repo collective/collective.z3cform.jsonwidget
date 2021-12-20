@@ -35,10 +35,8 @@ const WidgetDataContainer = () => {
   };
 
   const valueSnippet = entry => {
-    if (Object.keys(entry).length === 0) {
-      return '';
-    }
-    const firstItem = Object.values(entry)[0];
+    const firstField = schema.fieldsets[0].fields[0];
+    const firstItem = entry[firstField];
     let text = '';
 
     if (Array.isArray(firstItem)) {
