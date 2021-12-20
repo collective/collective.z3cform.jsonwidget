@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-0.2.5 (unreleased)
+1.0.0 (2021-12-20)
 ------------------
 
 - Improve widget usability.
