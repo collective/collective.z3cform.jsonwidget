@@ -1,5 +1,6 @@
 .python-version
 .coverage
+.DS_Store
 *.egg-info
 *.log
 *.mo

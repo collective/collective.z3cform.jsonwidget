@@ -5,7 +5,8 @@ Changelog
 1.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Force vocabularies batch size to 1000 to get all of possible values.
+  [cekk]
 
 
 1.0.0 (2021-12-20)

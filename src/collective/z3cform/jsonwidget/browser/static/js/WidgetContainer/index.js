@@ -87,12 +87,14 @@ class WidgetContainer extends Component {
     schema.fieldsets[0].fields.forEach(fieldId => {
       const field = schema.fields[fieldId];
       if (field.vocabulary) {
-        fetches.push({ id: fieldId, url: field.vocabulary['@id'] });
+        const url = field.vocabulary['@id'] + '?b_size=1000';
+        fetches.push({ id: fieldId, url });
       }
       if (field.widgetOptions) {
         const { vocabulary } = field.widgetOptions;
         if (vocabulary) {
-          fetches.push({ id: fieldId, url: vocabulary['@id'] });
+          const url = vocabulary['@id'] + '?b_size=1000';
+          fetches.push({ id: fieldId, url });
         }
       }
       Promise.all(
