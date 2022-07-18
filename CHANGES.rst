@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-1.0.1 (unreleased)
+1.1.0 (2022-07-18)
 ------------------
 
 - Force vocabularies batch size to 1000 to get all of possible values.
