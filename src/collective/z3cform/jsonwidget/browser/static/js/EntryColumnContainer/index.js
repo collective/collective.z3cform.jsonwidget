@@ -18,7 +18,7 @@ const EntryColumnContainer = props => {
     vocabulary,
     items,
   } = schema.fields[id];
-  let Field = null;
+  let Field = <TextLineField {...props}></TextLineField>;
   if (type === 'array') {
     if (!widgetOptions) {
       Field = <LinesField {...props}></LinesField>;
@@ -33,7 +33,10 @@ const EntryColumnContainer = props => {
     } else {
       Field = <TextLineField {...props}></TextLineField>;
     }
+  } else if (type === 'integer') {
+    Field = <TextLineField {...props} type="number"></TextLineField>;
   }
+  console.log('CAIAOAO');
   return (
     <div className="column block">
       <label>{title}</label>

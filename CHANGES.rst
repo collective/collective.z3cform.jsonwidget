@@ -5,8 +5,8 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Handle integer fields.
+  [cekk]
 
 1.1.0 (2022-07-18)
 ------------------

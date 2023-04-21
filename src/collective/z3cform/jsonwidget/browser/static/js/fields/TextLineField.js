@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import WidgetContext from '../utils/widgetContext';
 
-const TextLineField = ({ value, id, row }) => {
+const TextLineField = ({ value, id, row, type = 'text' }) => {
   const { updateField } = useContext(WidgetContext);
   const [data, setData] = useState({ text: '', timeout: 0 });
 
@@ -22,7 +22,7 @@ const TextLineField = ({ value, id, row }) => {
 
   return (
     <input
-      type="text"
+      type={type}
       value={data.text}
       onChange={e => updateText(e.target.value)}
     />
@@ -32,6 +32,7 @@ TextLineField.propTypes = {
   value: PropTypes.string,
   id: PropTypes.string,
   row: PropTypes.number,
+  type: PropTypes.string,
 };
 
 export default TextLineField;
