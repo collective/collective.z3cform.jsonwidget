@@ -36,7 +36,6 @@ const EntryColumnContainer = props => {
   } else if (type === 'integer') {
     Field = <TextLineField {...props} type="number"></TextLineField>;
   }
-  console.log('CAIAOAO');
   return (
     <div className="column block">
       <label>{title}</label>
