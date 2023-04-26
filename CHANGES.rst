@@ -5,7 +5,8 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix release.
+  [cekk]
 
 
 1.1.1 (2023-04-21)
