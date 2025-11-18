@@ -21,7 +21,17 @@ module.exports = {
       {
         test: /\.(js|jsx)$/,
         exclude: /node_modules/,
-        use: 'babel-loader',
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              // Assicurati che ci sia @babel/preset-env
+              '@babel/preset-env',
+              // Modifica preset-react per usare la modalità classica
+              ['@babel/preset-react', { runtime: 'classic' }],
+            ],
+          },
+        },
       },
       {
         test: /\.s[ac]ss$/i,
@@ -49,6 +59,7 @@ module.exports = {
     jquery: 'jQuery',
     react: 'React',
     'react-dom': 'ReactDOM',
+    'react-dom/client': 'ReactDOM',
   },
   devtool: 'source-map',
 };

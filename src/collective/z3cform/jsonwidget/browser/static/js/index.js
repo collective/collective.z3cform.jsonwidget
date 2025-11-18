@@ -2,7 +2,8 @@
 
 import $ from 'jquery';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// Invece di importare l'intero ReactDOM
+import { createRoot } from 'react-dom/client';
 
 import WidgetContainer from './WidgetContainer';
 
@@ -15,8 +16,7 @@ function initializeReactWidget() {
       const container = element.querySelector('.widget-wrapper');
       const schema = element.getAttribute('data-schema');
       const field = element.querySelector('.widget-field');
-      debugger;
-      const root = ReactDOM.createRoot(container);
+      const root = createRoot(container);
       root.render(
         <React.StrictMode>
           <WidgetContainer
