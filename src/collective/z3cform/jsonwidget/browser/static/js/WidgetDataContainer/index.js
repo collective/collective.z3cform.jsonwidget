@@ -12,29 +12,23 @@ import {
   faChevronRight,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './index.less';
+import './index.scss';
 import { Collapse } from 'react-collapse';
 
 const WidgetDataContainer = () => {
-  const {
-    value,
-    schema,
-    addRow,
-    removeRow,
-    moveRow,
-    getTranslationFor,
-  } = useContext(WidgetContext);
+  const { value, schema, addRow, removeRow, moveRow, getTranslationFor } =
+    useContext(WidgetContext);
 
   const [expandedGroups, setExpandedGroups] = useState({});
 
-  const toggleGroup = group => {
+  const toggleGroup = (group) => {
     setExpandedGroups({
       ...expandedGroups,
       [group]: !expandedGroups[group],
     });
   };
 
-  const valueSnippet = entry => {
+  const valueSnippet = (entry) => {
     const firstField = schema.fieldsets[0].fields[0];
     const firstItem = entry[firstField];
     let text = '';
@@ -64,9 +58,9 @@ const WidgetDataContainer = () => {
                 type="button"
                 title={getTranslationFor(
                   expandCollapseLabel,
-                  expandCollapseLabel,
+                  expandCollapseLabel
                 )}
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
                   toggleGroup(idx);
                 }}
@@ -85,7 +79,7 @@ const WidgetDataContainer = () => {
                     className="standalone"
                     type="button"
                     title={getTranslationFor('Move down', 'Move down')}
-                    onClick={e => {
+                    onClick={(e) => {
                       e.preventDefault();
                       moveRow({ from: idx, to: idx + 1 });
                     }}
@@ -98,7 +92,7 @@ const WidgetDataContainer = () => {
                     className="standalone"
                     type="button"
                     title={getTranslationFor('Move up', 'Move up')}
-                    onClick={e => {
+                    onClick={(e) => {
                       e.preventDefault();
                       moveRow({ from: idx, to: idx - 1 });
                     }}
@@ -110,7 +104,7 @@ const WidgetDataContainer = () => {
                   className="destructive"
                   type="button"
                   title={getTranslationFor('Delete', 'Delete')}
-                  onClick={e => {
+                  onClick={(e) => {
                     e.preventDefault();
                     removeRow(idx);
                   }}
@@ -121,7 +115,7 @@ const WidgetDataContainer = () => {
             </div>
             <Collapse isOpened={expandedGroups[idx] === true}>
               <div className="row-content">
-                {schema.fieldsets[0].fields.map(fieldId => (
+                {schema.fieldsets[0].fields.map((fieldId) => (
                   <EntryColumnContainer
                     key={`${idx}-${fieldId}`}
                     value={entry[fieldId]}
@@ -138,7 +132,7 @@ const WidgetDataContainer = () => {
         <button
           className="context"
           type="button"
-          onClick={e => {
+          onClick={(e) => {
             e.preventDefault();
             toggleGroup(value.length);
             addRow();

@@ -4,12 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus, faTrash } from '@fortawesome/free-solid-svg-icons';
 import WidgetContext from '../utils/widgetContext';
 
-import './LinesField.less';
+import './LinesField.scss';
 
 const LineField = ({ value, row, updateField }) => {
   const [data, setData] = useState({ text: '', timeout: 0 });
 
-  const updateText = targetValue => {
+  const updateText = (targetValue) => {
     if (data.timeout) {
       clearInterval(data.timeout);
     }
@@ -27,14 +27,14 @@ const LineField = ({ value, row, updateField }) => {
       type="text"
       className="input-line"
       value={data.text}
-      onChange={e => updateText(e.target.value)}
+      onChange={(e) => updateText(e.target.value)}
     />
   );
 };
 
 const LinesField = ({ value, id, row }) => {
   const { updateField, getTranslationFor } = useContext(WidgetContext);
-  const onUpdateRow = data => {
+  const onUpdateRow = (data) => {
     const newValue = value.map((rowText, rowIdx) => {
       if (rowIdx === data.row) {
         return data.newValue;
@@ -45,13 +45,13 @@ const LinesField = ({ value, id, row }) => {
     updateField({ row, id, value: newValue });
   };
 
-  const onAddRow = e => {
+  const onAddRow = (e) => {
     e.preventDefault();
-    let newValue = value.map(text => text);
+    let newValue = value.map((text) => text);
     newValue.push('');
     updateField({ row, id, value: newValue });
   };
-  const onDeleteRow = deletedRow => {
+  const onDeleteRow = (deletedRow) => {
     let newValue = value.filter((text, idx) => idx !== deletedRow);
     updateField({ row, id, value: newValue });
   };
@@ -71,7 +71,7 @@ const LinesField = ({ value, id, row }) => {
             <button
               className="destructive"
               type="button"
-              onClick={e => {
+              onClick={(e) => {
                 e.preventDefault();
                 onDeleteRow(idx);
               }}
