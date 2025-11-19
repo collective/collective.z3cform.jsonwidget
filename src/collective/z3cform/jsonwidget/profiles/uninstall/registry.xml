@@ -1,16 +1,18 @@
-<?xml version="1.0"?>
-<registry
-    xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-    i18n:domain="collective.z3cform.jsonwidget">
+<?xml version="1.0" encoding="utf-8"?>
+<registry xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+          i18n:domain="collective.z3cform.jsonwidget"
+>
 
-  <records prefix="plone.resources/z3cform-jsonwidget"
-          interface='Products.CMFPlone.interfaces.IResourceRegistry'
-          remove="True">
-  </records>
+  <records interface="Products.CMFPlone.interfaces.IResourceRegistry"
+           prefix="plone.resources/z3cform-jsonwidget"
+           remove="True"
+  >
+</records>
 
-  <records prefix="plone.bundles/z3cform-jsonwidget-bundle"
-           interface='Products.CMFPlone.interfaces.IBundleRegistry'
-           remove="True">
-  </records>
+  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+           prefix="plone.bundles/z3cform-jsonwidget-bundle"
+           remove="True"
+  >
+</records>
 
 </registry>

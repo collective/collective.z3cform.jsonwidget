@@ -39,3 +39,6 @@ report.html
 !.travis.yml
 !src/collective
 .Python
+.tox/
+.pytest_cache/
+.pyre/

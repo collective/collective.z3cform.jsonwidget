@@ -1,4 +1,4 @@
-# -*- coding: utf-8 -*-
+from plone import api
 from plone.restapi.types import utils
 from z3c.form.browser import widget
 from z3c.form.browser.textarea import TextAreaWidget
@@ -6,12 +6,11 @@ from z3c.form.interfaces import IFieldWidget
 from z3c.form.interfaces import IFormLayer
 from z3c.form.interfaces import ITextAreaWidget
 from z3c.form.widget import FieldWidget
+from z3c.relationfield.schema import RelationChoice
 from zope.component import adapter
 from zope.interface import implementer
 from zope.interface import implementer_only
 from zope.schema.interfaces import IField
-from z3c.relationfield.schema import RelationChoice
-from plone import api
 
 import json
 
@@ -24,23 +23,21 @@ class IJSONWidget(ITextAreaWidget):
 class JSONWidget(TextAreaWidget):
     """"""
 
-    klass = u"json-textarea-widget"
-    value = u""
+    klass = "json-textarea-widget"
+    value = ""
     schema = None
 
     def update(self):
-        super(JSONWidget, self).update()
+        super().update()
         widget.addFieldClass(self)
 
     def json_data(self):
-        data = super(JSONWidget, self).json_data()
+        data = super().json_data()
         data["type"] = "textarea-json"
         return data
 
     def get_schema(self):
-        fieldsets = utils.get_fieldsets(
-            self.context, self.request, self.schema
-        )
+        fieldsets = utils.get_fieldsets(self.context, self.request, self.schema)
         schema_fieldsets = utils.get_fieldset_infos(fieldsets)
         # Build JSON schema properties
         properties = utils.get_jsonschema_properties(

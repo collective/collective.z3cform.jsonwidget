@@ -1,0 +1,18 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:gs="http://namespaces.zope.org/genericsetup"
+    i18n_domain="collective.z3cform.jsonwidget"
+    >
+
+  <!-- Upgrade steps -->
+
+  <gs:upgradeStep
+      title="Plone 6 bundles compatibility"
+      description=""
+      profile="collective.z3cform.jsonwidget:default"
+      source="1000"
+      destination="2000"
+      handler=".upgrades.to_2000"
+      />
+
+</configure>

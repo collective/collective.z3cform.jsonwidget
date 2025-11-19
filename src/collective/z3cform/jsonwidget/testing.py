@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from plone.app.contenttypes.testing import PLONE_APP_CONTENTTYPES_FIXTURE
 from plone.app.robotframework.testing import REMOTE_LIBRARY_BUNDLE_FIXTURE
 from plone.app.testing import applyProfile
@@ -19,11 +18,12 @@ class CollectiveZ3CformJsonwidgetLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.restapi
+
         self.loadZCML(package=plone.restapi)
         self.loadZCML(package=collective.z3cform.jsonwidget)
 
     def setUpPloneSite(self, portal):
-        applyProfile(portal, 'collective.z3cform.jsonwidget:default')
+        applyProfile(portal, "collective.z3cform.jsonwidget:default")
 
 
 COLLECTIVE_Z3CFORM_JSONWIDGET_FIXTURE = CollectiveZ3CformJsonwidgetLayer()
@@ -31,13 +31,13 @@ COLLECTIVE_Z3CFORM_JSONWIDGET_FIXTURE = CollectiveZ3CformJsonwidgetLayer()
 
 COLLECTIVE_Z3CFORM_JSONWIDGET_INTEGRATION_TESTING = IntegrationTesting(
     bases=(COLLECTIVE_Z3CFORM_JSONWIDGET_FIXTURE,),
-    name='CollectiveZ3CformJsonwidgetLayer:IntegrationTesting',
+    name="CollectiveZ3CformJsonwidgetLayer:IntegrationTesting",
 )
 
 
 COLLECTIVE_Z3CFORM_JSONWIDGET_FUNCTIONAL_TESTING = FunctionalTesting(
     bases=(COLLECTIVE_Z3CFORM_JSONWIDGET_FIXTURE,),
-    name='CollectiveZ3CformJsonwidgetLayer:FunctionalTesting',
+    name="CollectiveZ3CformJsonwidgetLayer:FunctionalTesting",
 )
 
 
@@ -47,5 +47,5 @@ COLLECTIVE_Z3CFORM_JSONWIDGET_ACCEPTANCE_TESTING = FunctionalTesting(
         REMOTE_LIBRARY_BUNDLE_FIXTURE,
         z2.ZSERVER_FIXTURE,
     ),
-    name='CollectiveZ3CformJsonwidgetLayer:AcceptanceTesting',
+    name="CollectiveZ3CformJsonwidgetLayer:AcceptanceTesting",
 )

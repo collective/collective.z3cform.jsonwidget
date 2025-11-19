@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registry>
 
-  <records interface="plone.base.interfaces.resources.IBundleRegistry" prefix="plone.bundles/z3cform-jsonwidget">
+  <records interface="plone.base.interfaces.resources.IBundleRegistry"
+           prefix="plone.bundles/z3cform-jsonwidget"
+  >
     <value key="enabled">True</value>
     <value key="jscompilation">++plone++collective.z3cform.jsonwidget/dist/jsonwidget.min.js</value>
     <value key="csscompilation">++plone++collective.z3cform.jsonwidget/dist/jsonwidget.min.css</value>

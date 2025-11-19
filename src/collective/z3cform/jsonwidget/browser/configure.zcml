@@ -3,14 +3,15 @@
     xmlns:browser="http://namespaces.zope.org/browser"
     xmlns:plone="http://namespaces.plone.org/plone"
     xmlns:z3c="http://namespaces.zope.org/z3c"
-    i18n_domain="collective.z3cform.jsonwidget">
+    i18n_domain="collective.z3cform.jsonwidget"
+    >
 
   <plone:static
+      directory="static"
       name="collective.z3cform.jsonwidget"
       type="plone"
-      directory="static"
       />
-  
+
   <!-- define new widget -->
   <class class=".widget.JSONWidget">
     <require
@@ -26,9 +27,9 @@
       />
 
   <z3c:widgetTemplate
-      mode="input"
       widget=".widget.IJSONWidget"
-      layer="z3c.form.interfaces.IFormLayer"
       template="json_widget_input.pt"
+      layer="z3c.form.interfaces.IFormLayer"
+      mode="input"
       />
 </configure>
