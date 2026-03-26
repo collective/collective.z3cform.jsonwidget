@@ -1,114 +1,65 @@
-const webpack = require('webpack');
+// webpack.config.js
 const path = require('path');
-const dotenv = require('dotenv');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
 
-module.exports = (webpackEnv, argv) => {
-  const env = dotenv.config().parsed;
-  let envKeys = {};
-  if (env) {
-    envKeys = Object.keys(env).reduce((prev, next) => {
-      prev[`process.env.${next}`] = JSON.stringify(env[next]);
-      return prev;
-    }, {});
-  }
+const basePath = './src/collective/z3cform/jsonwidget/browser/static';
 
-  const isProduction = argv.mode === 'production';
-  const pkgDir = path.resolve(
-    __dirname,
-    './src/collective/z3cform/jsonwidget/browser/static/',
-  );
-  const buildPath = isProduction
-    ? path.resolve(pkgDir, './dist/prod')
-    : path.resolve(pkgDir, './dist/dev');
-  return {
-    entry: {
-      main: path.resolve(pkgDir, './js/index.js'),
-    },
-    output: {
-      path: buildPath,
-      filename: '[name].js',
-    },
-    plugins: [
-      new CleanWebpackPlugin(),
-      new webpack.DefinePlugin(envKeys),
-      ...(isProduction ? [] : [new webpack.HotModuleReplacementPlugin()]),
-      new MiniCssExtractPlugin(),
+module.exports = {
+  entry: {
+    jsonwidget: [
+      path.resolve(__dirname, basePath, 'js/index.js'),
+      // path.resolve(__dirname, basePath, 'sass/jsonwidget.scss'),
     ],
-    devServer: {
-      contentBase: buildPath,
-      hot: !isProduction,
-      port: 3000,
-      writeToDisk: true,
-    },
-    devtool: 'cheap-module-source-map',
-    module: {
-      rules: [
-        {
-          test: /\.(js|jsx)$/,
-          exclude: /node_modules/,
-          use: ['babel-loader'],
+  },
+  output: {
+    path: path.resolve(__dirname, basePath, 'dist'),
+    // ✅ NOME DEL FILE SEMPRE .min.js
+    filename: '[name].min.js',
+  },
+  module: {
+    rules: [
+      {
+        test: /\.(js|jsx)$/,
+        exclude: /node_modules/,
+        use: {
+          loader: 'babel-loader',
+          options: {
+            presets: [
+              // Assicurati che ci sia @babel/preset-env
+              '@babel/preset-env',
+              // Modifica preset-react per usare la modalità classica
+              ['@babel/preset-react', { runtime: 'classic' }],
+            ],
+          },
         },
-        {
-          test: /\.js$/,
-          exclude: /node_modules/,
-          use: ['babel-loader', 'eslint-loader'],
-        },
-        {
-          test: /\.css$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                url: false,
-              },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          'postcss-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require.resolve('sass'),
             },
-            'postcss-loader',
-          ],
-        },
-        {
-          test: /\.less$/,
-          use: [
-            MiniCssExtractPlugin.loader,
-            {
-              loader: 'css-loader',
-              options: {
-                url: false,
-              },
-            },
-            'postcss-loader',
-            {
-              loader: 'less-loader',
-              options: {
-                paths: 'node_modules',
-              },
-            },
-          ],
-        },
-        {
-          test: /\.svg$/,
-          use: [
-            {
-              loader: 'babel-loader',
-            },
-            {
-              loader: 'react-svg-loader',
-              options: {
-                jsx: true, // true outputs JSX tags
-              },
-            },
-          ],
-        },
-      ],
-    },
-    resolve: {
-      extensions: ['*', '.js', '.jsx'],
-    },
-    // externals: {
-    //   jquery: "jQuery"
-    // }
-  };
+          },
+        ],
+      },
+    ],
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      // ✅ NOME DEL FILE SEMPRE .min.css
+      filename: '[name].min.css',
+    }),
+  ],
+  externals: {
+    jquery: 'jQuery',
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'react-dom/client': 'ReactDOM',
+  },
+  devtool: 'source-map',
 };

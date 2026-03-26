@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-// import './index.less';
+// import './index.scss';
 
 const TextAreaField = ({ value }) => {
   return (

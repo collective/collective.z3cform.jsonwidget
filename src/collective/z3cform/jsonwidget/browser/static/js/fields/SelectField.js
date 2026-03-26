@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import Select from 'react-select';
 import WidgetContext from '../utils/widgetContext';
 
-// import './index.less';
+// import './index.scss';
 
 const SelectField = ({ value, id, row, multi }) => {
   const { vocabularies, updateField } = useContext(WidgetContext);
@@ -11,10 +11,10 @@ const SelectField = ({ value, id, row, multi }) => {
   if (!vocab) {
     return '';
   }
-  const options = vocab.items.map(item => {
+  const options = vocab.items.map((item) => {
     return { value: item.token, label: item.title };
   });
-  const selectValue = options.filter(option => {
+  const selectValue = options.filter((option) => {
     if (Array.isArray(value)) {
       return value.includes(option.value);
     } else {
@@ -27,10 +27,10 @@ const SelectField = ({ value, id, row, multi }) => {
       isClearable={true}
       defaultValue={selectValue}
       options={options}
-      onChange={option => {
+      onChange={(option) => {
         let newValue = null;
         if (Array.isArray(value)) {
-          newValue = option ? option.map(item => item.value) : [];
+          newValue = option ? option.map((item) => item.value) : [];
         } else {
           newValue = option ? option.value : '';
         }

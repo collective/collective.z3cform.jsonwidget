@@ -5,19 +5,12 @@ import TextLineField from '../fields/TextLineField';
 import SelectField from '../fields/SelectField';
 import WidgetContext from '../utils/widgetContext';
 import ArrayFieldContainer from '../ArrayFieldContainer';
-// import './index.less';
 
-const EntryColumnContainer = props => {
+const EntryColumnContainer = (props) => {
   const { id } = props;
   const { schema } = useContext(WidgetContext);
-  const {
-    type,
-    widgetOptions,
-    title,
-    description,
-    vocabulary,
-    items,
-  } = schema.fields[id];
+  const { type, widgetOptions, title, description, vocabulary, items } =
+    schema.fields[id];
   let Field = <TextLineField {...props}></TextLineField>;
   if (type === 'array') {
     if (!widgetOptions) {

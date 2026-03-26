@@ -1,24 +1,35 @@
+// js/widget.js
+
+import $ from 'jquery';
 import React from 'react';
-import ReactDOM from 'react-dom';
+// Invece di importare l'intero ReactDOM
+import { createRoot } from 'react-dom/client';
+
 import WidgetContainer from './WidgetContainer';
 
-document.addEventListener('DOMContentLoaded', function() {
+function initializeReactWidget() {
   const widgets = document.getElementsByClassName('json-textarea-widget');
-  const baseUrl = document.body.getAttribute('data-base-url');
+  const portalUrl = document.body.dataset.portalUrl || '';
 
   if (widgets.length) {
-    Array.from(widgets).forEach(element => {
-      const root = element.querySelector('.widget-wrapper');
+    Array.from(widgets).forEach((element) => {
+      const container = element.querySelector('.widget-wrapper');
       const schema = element.getAttribute('data-schema');
       const field = element.querySelector('.widget-field');
-      ReactDOM.render(
-        <WidgetContainer
-          baseUrl={baseUrl}
-          schema={JSON.parse(schema)}
-          fieldId={field.getAttribute('id')}
-        />,
-        root,
+      const root = createRoot(container);
+      root.render(
+        <React.StrictMode>
+          <WidgetContainer
+            baseUrl={portalUrl}
+            schema={JSON.parse(schema)}
+            fieldId={field.getAttribute('id')}
+          />
+        </React.StrictMode>
       );
     });
   }
+}
+
+$(function () {
+  initializeReactWidget();
 });

@@ -1,18 +1,11 @@
 {
   "singleQuote": true,
-  "trailingComma": "all",
+  "trailingComma": "es5",
   "overrides": [
     {
-      "files": "*.less",
+      "files": "*.scss",
       "options": {
-        "tabWidth": 4,
-        "printWidth": 120
-      }
-    },
-    {
-      "files": "*.json",
-      "options": {
-        "printWidth": 200
+        "tabWidth": 4
       }
     }
   ]

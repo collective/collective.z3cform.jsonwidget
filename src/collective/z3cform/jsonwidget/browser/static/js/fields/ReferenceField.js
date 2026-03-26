@@ -12,14 +12,14 @@ import {
   faCheckCircle,
 } from '@fortawesome/free-solid-svg-icons';
 
-import './ReferenceField.less';
+import './ReferenceField.scss';
 
 const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
   <div className="modal-breadcrumbs">
     <a
       className="breadcrumb home"
       href="#"
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault();
         fetchData({ path: null, breadcrumbs: [] });
       }}
@@ -35,7 +35,7 @@ const Breadcrumbs = ({ fetchData, breadcrumbs }) => (
           <a
             className="breadcrumb"
             href="#"
-            onClick={e => {
+            onClick={(e) => {
               e.preventDefault();
               const newBreadcrumbs = JSON.parse(JSON.stringify(breadcrumbs));
               fetchData({
@@ -69,7 +69,7 @@ const ItemElement = ({ isSelected, result, onAddReference }) => {
       href="#"
       className="content-title"
       title={getTranslationFor('Add') + ' ' + result.Title}
-      onClick={e => {
+      onClick={(e) => {
         e.preventDefault();
         onAddReference(result);
       }}
@@ -91,8 +91,8 @@ const ReferenceField = ({ value, id, row, items }) => {
     path: root,
     breadcrumbs: [],
   });
-  const selectedUIDs = value ? value.map(item => item.UID) : [];
-  const openModal = e => {
+  const selectedUIDs = value ? value.map((item) => item.UID) : [];
+  const openModal = (e) => {
     e.preventDefault();
     setModalOpenState(true);
   };
@@ -100,8 +100,8 @@ const ReferenceField = ({ value, id, row, items }) => {
     setModalOpenState(false);
   };
 
-  const onAddReference = item => {
-    const newValue = value.map(val => val);
+  const onAddReference = (item) => {
+    const newValue = value.map((val) => val);
     newValue.push(item);
     updateField({ row, id, value: newValue });
   };
@@ -148,7 +148,7 @@ const ReferenceField = ({ value, id, row, items }) => {
         },
         headers: { Accept: 'application/json' },
       })
-      .then(data => {
+      .then((data) => {
         let newLoaded;
         if (page == 1) {
           // first page
@@ -179,14 +179,14 @@ const ReferenceField = ({ value, id, row, items }) => {
     <div className="reference-field-wrapper">
       {value.length > 0 && (
         <div className="references">
-          {value.map(ref => (
+          {value.map((ref) => (
             <div key={`ref-${ref.UID}`} className="reference">
               <button
                 className="destructive"
                 type="button"
-                onClick={e => {
+                onClick={(e) => {
                   e.preventDefault();
-                  const newValue = value.filter(val => val.UID !== ref.UID);
+                  const newValue = value.filter((val) => val.UID !== ref.UID);
                   updateField({ row, id, value: newValue });
                 }}
                 title={getTranslationFor('Delete')}
@@ -227,7 +227,7 @@ const ReferenceField = ({ value, id, row, items }) => {
           <h2>{getTranslationFor('Select contents')}</h2>
           <p className="discreet">
             {getTranslationFor(
-              'Navigate through site structure and select one or more contents.',
+              'Navigate through site structure and select one or more contents.'
             )}
           </p>
 
@@ -236,7 +236,7 @@ const ReferenceField = ({ value, id, row, items }) => {
             breadcrumbs={modalData.breadcrumbs}
           />
           <div className="content-results-wrapper">
-            {modalData.results.map(result => {
+            {modalData.results.map((result) => {
               const isSelected = selectedUIDs.includes(result.UID);
               return (
                 <div
