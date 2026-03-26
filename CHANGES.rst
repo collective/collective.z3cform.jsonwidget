@@ -5,7 +5,8 @@ Changelog
 1.1.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Plone 6 compatibility. Use 1.x tags for Plone < 6. [cekk]
+  [cekk]
 
 
 1.1.2 (2023-04-26)
