@@ -10,3 +10,4 @@ include *.txt
 exclude .babelrc
 exclude .nvmrc
 prune src/collective/z3cform/jsonwidget/browser/static/dist/dev
+exclude *.cfg
