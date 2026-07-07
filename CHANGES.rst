@@ -5,7 +5,8 @@ Changelog
 2.0.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed wrong logger import in upgrade.
+  [daniele]
 
 
 2.0.0 (2026-03-26)

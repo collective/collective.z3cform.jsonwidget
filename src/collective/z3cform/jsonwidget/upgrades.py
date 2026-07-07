@@ -1,6 +1,9 @@
-from collective.editablemenu import logger
 from plone import api
 from plone.base.utils import get_installer
+
+import logging
+
+logger = logging.getLogger(__name__)
 
 default_profile = "profile-collective.z3cform.jsonwidget:default"
 
