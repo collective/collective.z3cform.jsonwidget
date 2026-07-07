@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.1 (unreleased)
+2.0.1 (2026-07-07)
 ------------------
 
 - Fixed wrong logger import in upgrade.
