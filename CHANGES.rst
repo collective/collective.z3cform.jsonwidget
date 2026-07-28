@@ -5,7 +5,8 @@ Changelog
 2.0.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added redturtle.reactbundle as dependency.
+  [daniele]
 
 
 2.0.1 (2026-07-07)
