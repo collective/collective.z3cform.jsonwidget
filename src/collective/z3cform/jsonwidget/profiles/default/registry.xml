@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
 <registry>
 
+  <!--
+    This bundle was enabled=True unconditionally, so it was injected on
+    every page even though it's only needed on forms that actually use
+    JSONFieldWidget. Gate it with "expression" instead of enabled=False:
+    "expression" is evaluated independently of Plone's bundle-dependency
+    check (which only looks at the *global* enabled flag, not per-request
+    overrides), so this bundle's own "depends" on react-bundle keeps
+    validating correctly. Forms that use JSONFieldWidget must call
+    add_bundle_on_request(request, "z3cform-jsonwidget") (and
+    add_bundle_on_request(request, "react-bundle"), since that one is
+    gated the same way) before rendering.
+  -->
   <records interface="plone.base.interfaces.resources.IBundleRegistry"
            prefix="plone.bundles/z3cform-jsonwidget"
   >
     <value key="enabled">True</value>
+    <value key="expression">python: 'z3cform-jsonwidget' in getattr(request, 'enabled_bundles', [])</value>
     <value key="jscompilation">++plone++collective.z3cform.jsonwidget/dist/jsonwidget.min.js</value>
     <value key="csscompilation">++plone++collective.z3cform.jsonwidget/dist/jsonwidget.min.css</value>
     <value key="load_async">False</value>

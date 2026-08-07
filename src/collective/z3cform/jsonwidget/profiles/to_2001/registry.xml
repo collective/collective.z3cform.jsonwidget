@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<registry>
+
+  <!--
+    Gate the bundle so it only loads on forms that opt in via
+    add_bundle_on_request(request, "z3cform-jsonwidget") - see
+    profiles/default/registry.xml for the full rationale.
+  -->
+  <records interface="plone.base.interfaces.resources.IBundleRegistry"
+           prefix="plone.bundles/z3cform-jsonwidget"
+  >
+    <value key="expression">python: 'z3cform-jsonwidget' in getattr(request, 'enabled_bundles', [])</value>
+  </records>
+
+</registry>

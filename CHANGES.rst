@@ -2,11 +2,24 @@ Changelog
 =========
 
 
-2.0.2 (unreleased)
+3.0.0 (unreleased)
 ------------------
 
 - Added redturtle.reactbundle as dependency.
   [daniele]
+- [BREAKING CHANGE] the ``z3cform-jsonwidget`` bundle is no longer loaded on
+  every page: it's now gated by an ``expression`` and only renders when a
+  view calls ``add_bundle_on_request(request, "z3cform-jsonwidget")``. It
+  was previously ``enabled=True`` unconditionally, which meant
+  ``jsonwidget.min.js``/``.css`` were injected sitewide even though only
+  forms using ``JSONFieldWidget`` need them. If your form uses
+  ``JSONFieldWidget``, update it to also call
+  ``add_bundle_on_request(request, "react-bundle")`` and
+  ``add_bundle_on_request(request, "z3cform-jsonwidget")`` before
+  rendering (see collective.limitfilesizepanel for an example). An
+  upgrade step (``to_2001``) applies the same change to already
+  installed sites.
+  [mamico]
 
 
 2.0.1 (2026-07-07)

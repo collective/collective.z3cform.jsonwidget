@@ -36,6 +36,13 @@
       directory="profiles/to_2000"
       />
   <genericsetup:registerProfile
+      name="to_2001"
+      title="collective.z3cform.jsonwidget: to 2001"
+      description=""
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      directory="profiles/to_2001"
+      />
+  <genericsetup:registerProfile
       name="uninstall"
       title="collective.z3cform.jsonwidget (uninstall)"
       description="Uninstalls the collective.z3cform.jsonwidget add-on."
