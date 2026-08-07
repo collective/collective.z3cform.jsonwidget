@@ -30,6 +30,9 @@ log.html
 output.xml
 pip-selfcheck.json
 report.html
+robot_log.html
+robot_output.xml
+robot_report.html
 # excludes
 !.coveragerc
 !.editorconfig
