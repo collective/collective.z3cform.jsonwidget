@@ -7,6 +7,7 @@ from plone.app.testing import PloneSandboxLayer
 from plone.testing import z2
 
 import collective.z3cform.jsonwidget
+import collective.z3cform.jsonwidget.tests
 
 
 class CollectiveZ3CformJsonwidgetLayer(PloneSandboxLayer):
@@ -16,11 +17,22 @@ class CollectiveZ3CformJsonwidgetLayer(PloneSandboxLayer):
     def setUpZope(self, app, configurationContext):
         # Load any other ZCML that is required for your tests.
         # The z3c.autoinclude feature is disabled in the Plone fixture base
-        # layer.
+        # layer, so profile-redturtle.reactbundle:default (a dependency of
+        # collective.z3cform.jsonwidget:default, see profiles/default/
+        # metadata.xml) needs its ZCML loaded here too, otherwise
+        # applyProfile() fails with a missing-dependency-profile KeyError.
         import plone.restapi
+        import redturtle.reactbundle
 
         self.loadZCML(package=plone.restapi)
+        self.loadZCML(package=redturtle.reactbundle)
         self.loadZCML(package=collective.z3cform.jsonwidget)
+        # Test-only view exercising JSONFieldWidget, never installed on a
+        # real site.
+        self.loadZCML(
+            package=collective.z3cform.jsonwidget.tests,
+            name="testing.zcml",
+        )
 
     def setUpPloneSite(self, portal):
         applyProfile(portal, "collective.z3cform.jsonwidget:default")

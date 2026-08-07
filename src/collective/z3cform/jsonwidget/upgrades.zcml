@@ -15,4 +15,13 @@
       handler=".upgrades.to_2000"
       />
 
+  <gs:upgradeStep
+      title="Gate the z3cform-jsonwidget bundle behind an expression"
+      description="it was enabled=True unconditionally; views using JSONFieldWidget must call add_bundle_on_request(request, 'z3cform-jsonwidget')"
+      profile="collective.z3cform.jsonwidget:default"
+      source="2000"
+      destination="2001"
+      handler=".upgrades.to_2001"
+      />
+
 </configure>

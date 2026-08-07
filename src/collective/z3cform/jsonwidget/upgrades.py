@@ -3,6 +3,7 @@ from plone.base.utils import get_installer
 
 import logging
 
+
 logger = logging.getLogger(__name__)
 
 default_profile = "profile-collective.z3cform.jsonwidget:default"
@@ -18,3 +19,11 @@ def to_2000(context):
     installer.install_product(product_id="redturtle.reactbundle")
     setup_tool.runImportStepFromProfile(default_profile, "plone.app.registry")
     logger.info("Plone 6 compatibility")
+
+
+def to_2001(context):
+    setup_tool = api.portal.get_tool("portal_setup")
+    setup_tool.runAllImportStepsFromProfile(
+        "profile-collective.z3cform.jsonwidget:to_2001"
+    )
+    logger.info("Gated the z3cform-jsonwidget bundle behind an expression")

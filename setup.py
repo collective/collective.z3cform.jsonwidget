@@ -15,19 +15,23 @@ long_description = "\n\n".join(
 
 setup(
     name="collective.z3cform.jsonwidget",
-    version="2.0.2.dev0",
+    version="3.0.0.dev0",
     description="Custom widget to manage complex json data stored into a text field",
     long_description=long_description,
     # Get more from https://pypi.org/classifiers/
     classifiers=[
+        "Development Status :: 5 - Production/Stable",
         "Environment :: Web Environment",
         "Framework :: Plone",
         "Framework :: Plone :: Addon",
         "Framework :: Plone :: 5.2",
         "Programming Language :: Python",
-        "Programming Language :: Python :: 2.7",
-        "Programming Language :: Python :: 3.6",
         "Programming Language :: Python :: 3.7",
+        "Programming Language :: Python :: 3.8",
+        "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
+        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.12",
         "Operating System :: OS Independent",
         "License :: OSI Approved :: GNU General Public License v2 (GPLv2)",
     ],
@@ -39,7 +43,7 @@ setup(
         "PyPI": "https://pypi.python.org/pypi/collective.z3cform.jsonwidget",
         "Source": "https://github.com/collective/collective.z3cform.jsonwidget",
         "Tracker": "https://github.com/collective/collective.z3cform.jsonwidget/issues",
-        # 'Documentation': 'https://collective.z3cform.jsonwidget.readthedocs.io/en/latest/',
+        # 'Documentation': 'https://collective.z3cform.jsonwidget.readthedocs.io',
     },
     license="GPL version 2",
     packages=find_packages("src", exclude=["ez_setup"]),
@@ -66,6 +70,7 @@ setup(
             "plone.testing>=5.0.0",
             "plone.app.contenttypes",
             "plone.app.robotframework[debug]",
+            "robotframework-browser",
         ],
     },
     entry_points="""
