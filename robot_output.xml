@@ -1,0 +1,843 @@
+<robot generator="Robot 7.3.2 (Python 3.11.14 on linux)" generated="2026-08-07T17:47:58.867444" rpa="false" schemaversion="5">
+<suite id="s1" name="Test Jsonwidget Bundle" source="/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/src/collective/z3cform/jsonwidget/tests/robot/test_jsonwidget_bundle.robot">
+<test id="s1-t1" name="jsonwidget.min.js is not loaded on a plain page" line="22">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Enable Autologin As" owner="Remote">
+<msg time="2026-08-07T17:47:59.142868" level="INFO">None</msg>
+<arg>Manager</arg>
+<doc>Add and configure DomainAuthHelper PAS-plugin to login
+        all anonymous users from localhost as a special *Remote User* with
+        one or more given roles. Examples of use::</doc>
+<status status="PASS" start="2026-08-07T17:47:59.138999" elapsed="0.003929"/>
+</kw>
+<kw name="Plone Test Setup" owner="browser">
+<kw name="Open Test Browser" owner="browser">
+<kw name="Configure Test Browser" owner="browser">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.144065" level="INFO">${DEBUG} = False</msg>
+<var>${DEBUG}</var>
+<arg>"${DEBUG}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.143874" elapsed="0.000212"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.144337" level="INFO">${TRACE} = False</msg>
+<var>${TRACE}</var>
+<arg>"${TRACE}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.144182" elapsed="0.000173"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.144593" level="INFO">${HEADLESS} = False</msg>
+<var>${HEADLESS}</var>
+<arg>"${HEADLESS}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.144444" elapsed="0.000166"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.144823" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>"${BROWSER}".startswith("headless")</arg>
+<arg>${TRUE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.144693" elapsed="0.000147"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.145017" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>${TRACE}</arg>
+<arg>${FALSE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.144913" elapsed="0.000120"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.145214" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>${DEBUG}</arg>
+<arg>${FALSE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.145108" elapsed="0.000123"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.145673" level="INFO">${BROWSER} = chromium</msg>
+<var>${BROWSER}</var>
+<arg>"${BROWSER}".startswith("headless")</arg>
+<arg>${BROWSER[len("headless"):]}</arg>
+<arg>${BROWSER}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.145304" elapsed="0.000395"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.145922" level="INFO">${BROWSER} = chromium</msg>
+<var>${BROWSER}</var>
+<arg>"${BROWSER}" == "chrome"</arg>
+<arg>chromium</arg>
+<arg>${BROWSER}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.145786" elapsed="0.000152"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.146216" level="INFO">${VIDEO} = {'dir': '/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_not_loaded_on_a_plain_page/video'}</msg>
+<var>${VIDEO}</var>
+<arg>dir</arg>
+<arg>${OUTPUT_DIR}/video</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.146013" elapsed="0.000221"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.146442" level="INFO">${BROWSER} = chromium</msg>
+<arg>${BROWSER}</arg>
+<arg>${BROWSER}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.146310" elapsed="0.000157"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.146653" level="INFO">${DEBUG} = False</msg>
+<arg>${DEBUG}</arg>
+<arg>${DEBUG}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.146535" elapsed="0.000147"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.146856" level="INFO">${HEADLESS} = True</msg>
+<arg>${HEADLESS}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.146747" elapsed="0.000132"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.147045" level="INFO">${TRACE} = False</msg>
+<arg>${TRACE}</arg>
+<arg>${TRACE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.146941" elapsed="0.000127"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.147239" level="INFO">${VIDEO} = {'dir': '/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_not_loaded_on_a_plain_page/video'}</msg>
+<arg>${VIDEO}</arg>
+<arg>${VIDEO}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.147129" elapsed="0.000134"/>
+</kw>
+<status status="PASS" start="2026-08-07T17:47:59.143630" elapsed="0.003675"/>
+</kw>
+<if>
+<branch type="IF" condition="${DEBUG}">
+<kw name="Open Browser" owner="Browser">
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.147470" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.147359" elapsed="0.000174"/>
+</branch>
+<branch type="ELSE IF" condition="${TRACE}">
+<kw name="New Persistent Context" owner="Browser">
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>tracing=${TRACING}</arg>
+<arg>headless=${HEADLESS}</arg>
+<arg>recordVideo=${VIDEO}</arg>
+<doc>Open a new
+[https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context | persistent context].</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.147657" elapsed="0.000046"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.147562" elapsed="0.000172"/>
+</branch>
+<branch type="ELSE">
+<kw name="New Persistent Context" owner="Browser">
+<msg time="2026-08-07T17:47:59.148938" level="INFO">{
+  "userDataDir": "",
+  "browser": "chromium",
+  "headless": true,
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "chromiumSandbox": false,
+  "devtools": false,
+  "forcedColors": "none",
+  "handleSIGHUP": true,
+  "handleSIGINT": true,
+  "handleSIGTERM": true,
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "slowMo": 0.0,
+  "timeout": 30000.0,
+  "url": "http://localhost:54709/plone",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "tracesDir": "/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_not_loaded_on_a_plain_page/browser/traces/temp/2ba62f45-3b18-4c59-b277-13cc43233ca9"
+}</msg>
+<msg time="2026-08-07T17:47:59.152423" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>headless=${HEADLESS}</arg>
+<doc>Open a new
+[https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context | persistent context].</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.147845" elapsed="0.005168">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.147765" elapsed="0.005324">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</branch>
+<status status="FAIL" start="2026-08-07T17:47:59.147342" elapsed="0.005781">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</if>
+<status status="FAIL" start="2026-08-07T17:47:59.143406" elapsed="0.009779">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.143115" elapsed="0.010127">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>Enable autologin as</arg>
+<arg>Manager</arg>
+<arg>AND</arg>
+<arg>Plone test setup</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.138790" elapsed="0.014496">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<kw name="Run Keywords" owner="BuiltIn" type="TEARDOWN">
+<kw name="Plone Test Teardown" owner="browser">
+<kw name="Run Keyword If Test Failed" owner="BuiltIn">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-08-07T17:47:59.157758" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.153904" elapsed="0.004060">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>${BROWSER_RUN_ON_FAILURE}</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.153771" elapsed="0.004257">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<if>
+<branch type="IF" condition="${TRACE}">
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.158220" elapsed="0.000034"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.158091" elapsed="0.000189"/>
+</branch>
+<status status="PASS" start="2026-08-07T17:47:59.158074" elapsed="0.000248"/>
+</if>
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-08-07T17:47:59.162756" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.158378" elapsed="0.004500">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.153605" elapsed="0.009413">Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>Plone test teardown</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.153434" elapsed="0.009659">Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<doc>Only asserts on jsonwidget.min.js, gated by this
+package's own bundle "expression". Does NOT assert on
+react.min.js: redturtle.reactbundle's own gating is that
+package's concern, and as currently released on PyPI it still
+loads react.min.js unconditionally.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.137919" elapsed="0.025236">Setup failed:
+
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+Also teardown failed:
+Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</test>
+<status status="FAIL" start="2026-08-07T17:47:58.868342" elapsed="0.298066"/>
+<test id="s1-t2" name="jsonwidget.min.js is loaded when a form opts in via add_bundle_on_request" line="32">
+<kw name="Run Keywords" owner="BuiltIn" type="SETUP">
+<kw name="Enable Autologin As" owner="Remote">
+<msg time="2026-08-07T17:47:59.390131" level="INFO">None</msg>
+<arg>Manager</arg>
+<doc>Add and configure DomainAuthHelper PAS-plugin to login
+        all anonymous users from localhost as a special *Remote User* with
+        one or more given roles. Examples of use::</doc>
+<status status="PASS" start="2026-08-07T17:47:59.387071" elapsed="0.003116"/>
+</kw>
+<kw name="Plone Test Setup" owner="browser">
+<kw name="Open Test Browser" owner="browser">
+<kw name="Configure Test Browser" owner="browser">
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.391295" level="INFO">${DEBUG} = False</msg>
+<var>${DEBUG}</var>
+<arg>"${DEBUG}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.391074" elapsed="0.000246"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.391611" level="INFO">${TRACE} = False</msg>
+<var>${TRACE}</var>
+<arg>"${TRACE}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.391427" elapsed="0.000203"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.391862" level="INFO">${HEADLESS} = False</msg>
+<var>${HEADLESS}</var>
+<arg>"${HEADLESS}".lower() in ["1", "on", "true", "yes"]</arg>
+<arg>${TRUE}</arg>
+<arg>${FALSE}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.391718" elapsed="0.000163"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.392087" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>"${BROWSER}".startswith("headless")</arg>
+<arg>${TRUE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.391960" elapsed="0.000145"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.392299" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>${TRACE}</arg>
+<arg>${FALSE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.392178" elapsed="0.000138"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.392496" level="INFO">${HEADLESS} = True</msg>
+<var>${HEADLESS}</var>
+<arg>${DEBUG}</arg>
+<arg>${FALSE}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.392395" elapsed="0.000117"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.392940" level="INFO">${BROWSER} = chromium</msg>
+<var>${BROWSER}</var>
+<arg>"${BROWSER}".startswith("headless")</arg>
+<arg>${BROWSER[len("headless"):]}</arg>
+<arg>${BROWSER}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.392583" elapsed="0.000379"/>
+</kw>
+<kw name="Set Variable If" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.393368" level="INFO">${BROWSER} = chromium</msg>
+<var>${BROWSER}</var>
+<arg>"${BROWSER}" == "chrome"</arg>
+<arg>chromium</arg>
+<arg>${BROWSER}</arg>
+<doc>Sets variable based on the given condition.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.393048" elapsed="0.000339"/>
+</kw>
+<kw name="Create Dictionary" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.393622" level="INFO">${VIDEO} = {'dir': '/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_loaded_when_a_form_opts_in_via_addbundleonrequest/video'}</msg>
+<var>${VIDEO}</var>
+<arg>dir</arg>
+<arg>${OUTPUT_DIR}/video</arg>
+<doc>Creates and returns a dictionary based on the given ``items``.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.393472" elapsed="0.000170"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.393872" level="INFO">${BROWSER} = chromium</msg>
+<arg>${BROWSER}</arg>
+<arg>${BROWSER}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.393731" elapsed="0.000169"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.394100" level="INFO">${DEBUG} = False</msg>
+<arg>${DEBUG}</arg>
+<arg>${DEBUG}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.393974" elapsed="0.000153"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.394316" level="INFO">${HEADLESS} = True</msg>
+<arg>${HEADLESS}</arg>
+<arg>${HEADLESS}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.394195" elapsed="0.000146"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.394524" level="INFO">${TRACE} = False</msg>
+<arg>${TRACE}</arg>
+<arg>${TRACE}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.394409" elapsed="0.000141"/>
+</kw>
+<kw name="Set Suite Variable" owner="BuiltIn">
+<msg time="2026-08-07T17:47:59.394736" level="INFO">${VIDEO} = {'dir': '/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_loaded_when_a_form_opts_in_via_addbundleonrequest/video'}</msg>
+<arg>${VIDEO}</arg>
+<arg>${VIDEO}</arg>
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<status status="PASS" start="2026-08-07T17:47:59.394615" elapsed="0.000147"/>
+</kw>
+<status status="PASS" start="2026-08-07T17:47:59.390899" elapsed="0.003910"/>
+</kw>
+<if>
+<branch type="IF" condition="${DEBUG}">
+<kw name="Open Browser" owner="Browser">
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Opens a new browser instance. Use this keyword for quick experiments or debugging sessions.</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.394982" elapsed="0.000033"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.394868" elapsed="0.000180"/>
+</branch>
+<branch type="ELSE IF" condition="${TRACE}">
+<kw name="New Persistent Context" owner="Browser">
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>tracing=${TRACING}</arg>
+<arg>headless=${HEADLESS}</arg>
+<arg>recordVideo=${VIDEO}</arg>
+<doc>Open a new
+[https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context | persistent context].</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.395177" elapsed="0.000031"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.395080" elapsed="0.000160"/>
+</branch>
+<branch type="ELSE">
+<kw name="New Persistent Context" owner="Browser">
+<msg time="2026-08-07T17:47:59.396516" level="INFO">{
+  "userDataDir": "",
+  "browser": "chromium",
+  "headless": true,
+  "acceptDownloads": true,
+  "bypassCSP": false,
+  "chromiumSandbox": false,
+  "devtools": false,
+  "forcedColors": "none",
+  "handleSIGHUP": true,
+  "handleSIGINT": true,
+  "handleSIGTERM": true,
+  "ignoreHTTPSErrors": false,
+  "javaScriptEnabled": true,
+  "offline": false,
+  "reducedMotion": "no-preference",
+  "serviceWorkers": "allow",
+  "slowMo": 0.0,
+  "timeout": 30000.0,
+  "url": "http://localhost:54709/plone",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "tracesDir": "/home/mauro/Work/UNIFE/unife.buildout/components/plone/src/collective.z3cform.jsonwidget/test_jsonwidget_bundle/jsonwidgetminjs_is_loaded_when_a_form_opts_in_via_addbundleonrequest/browser/traces/temp/d32b1c1f-c65b-4451-9b76-48ad1bc47ff0"
+}</msg>
+<msg time="2026-08-07T17:47:59.400165" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<arg>url=${START_URL}</arg>
+<arg>browser=${BROWSER}</arg>
+<arg>headless=${HEADLESS}</arg>
+<doc>Open a new
+[https://playwright.dev/docs/api/class-browsertype#browser-type-launch-persistent-context | persistent context].</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.395340" elapsed="0.004939">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.395266" elapsed="0.005085">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</branch>
+<status status="FAIL" start="2026-08-07T17:47:59.394849" elapsed="0.005538">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</if>
+<status status="FAIL" start="2026-08-07T17:47:59.390622" elapsed="0.009834">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.390344" elapsed="0.010170">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>Enable autologin as</arg>
+<arg>Manager</arg>
+<arg>AND</arg>
+<arg>Plone test setup</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.386876" elapsed="0.013686">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<kw name="Run Keywords" owner="BuiltIn" type="TEARDOWN">
+<kw name="Plone Test Teardown" owner="browser">
+<kw name="Run Keyword If Test Failed" owner="BuiltIn">
+<kw name="Take Screenshot" owner="Browser">
+<msg time="2026-08-07T17:47:59.405624" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<tag>PageContent</tag>
+<doc>Takes a screenshot of the current window or element and saves it to disk.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.401265" elapsed="0.004472">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>${BROWSER_RUN_ON_FAILURE}</arg>
+<doc>Runs the given keyword with the given arguments, if the test failed.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.401114" elapsed="0.004687">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<if>
+<branch type="IF" condition="${TRACE}">
+<kw name="Sleep" owner="BuiltIn">
+<arg>1s</arg>
+<doc>Pauses the test executed for the given time.</doc>
+<status status="NOT RUN" start="2026-08-07T17:47:59.405993" elapsed="0.000032"/>
+</kw>
+<status status="NOT RUN" start="2026-08-07T17:47:59.405869" elapsed="0.000184"/>
+</branch>
+<status status="PASS" start="2026-08-07T17:47:59.405851" elapsed="0.000249"/>
+</if>
+<kw name="Close Browser" owner="Browser">
+<msg time="2026-08-07T17:47:59.408643" level="FAIL">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<tag>BrowserControl</tag>
+<tag>Setter</tag>
+<doc>Closes the current browser.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.406158" elapsed="0.002579">
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.400927" elapsed="0.007927">Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<arg>Plone test teardown</arg>
+<doc>Executes all the given keywords in a sequence.</doc>
+<status status="FAIL" start="2026-08-07T17:47:59.400722" elapsed="0.008199">Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</kw>
+<status status="FAIL" start="2026-08-07T17:47:59.386347" elapsed="0.022629">Setup failed:
+
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+Also teardown failed:
+Several failures occurred:
+
+1) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper
+
+2) 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</status>
+</test>
+<status status="FAIL" start="2026-08-07T17:47:59.200849" elapsed="0.211244"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="2" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Test Jsonwidget Bundle" id="s1" pass="0" fail="2" skip="0">Test Jsonwidget Bundle</stat>
+</suite>
+</statistics>
+<errors>
+<msg time="2026-08-07T17:47:59.166046" level="ERROR">Calling method '_end_test' of listener 'Browser' failed: 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<msg time="2026-08-07T17:47:59.169354" level="ERROR">Calling method '_end_suite' of listener 'Browser' failed: 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<msg time="2026-08-07T17:47:59.411837" level="ERROR">Calling method '_end_test' of listener 'Browser' failed: 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+<msg time="2026-08-07T17:47:59.415192" level="ERROR">Calling method '_end_suite' of listener 'Browser' failed: 
+#############################################################
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;RF-Browser&#160;dependencies&#160;not&#160;found&#160;in&#160;installation&#160;path!&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;Run&#160;`rfbrowser&#160;init`&#160;to&#160;install.&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;&#160;#
+#############################################################
+Installation path: /tmp/jsonwidget_test_venv/lib/python3.11/site-packages/Browser/wrapper</msg>
+</errors>
+</robot>

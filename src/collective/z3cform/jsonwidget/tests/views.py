@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 from collective.z3cform.jsonwidget.browser.widget import JSONFieldWidget
 from plone.z3cform.layout import FormWrapper
 from plone.z3cform.layout import wrap_form
