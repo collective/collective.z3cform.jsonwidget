@@ -3,13 +3,20 @@
           i18n:domain="collective.z3cform.jsonwidget"
 >
 
-  <records interface="Products.CMFPlone.interfaces.IResourceRegistry"
+  <records interface="plone.base.interfaces.resources.IBundleRegistry"
+           prefix="plone.bundles/z3cform-jsonwidget"
+           remove="True"
+  >
+</records>
+
+  <!-- Plone 5 resources: they should be already removed by to_2000 upgrade step -->
+  <records interface="plone.base.interfaces.resources.IResourceRegistry"
            prefix="plone.resources/z3cform-jsonwidget"
            remove="True"
   >
 </records>
 
-  <records interface="Products.CMFPlone.interfaces.IBundleRegistry"
+  <records interface="plone.base.interfaces.resources.IBundleRegistry"
            prefix="plone.bundles/z3cform-jsonwidget-bundle"
            remove="True"
   >

@@ -7,6 +7,9 @@ Changelog
 
 - Added redturtle.reactbundle as dependency.
   [daniele]
+- Fix uninstall profile: remove also ``plone.bundles/z3cform-jsonwidget`` bundle
+  registered since 2.0.0.
+  [cekk]
 
 
 2.0.1 (2026-07-07)

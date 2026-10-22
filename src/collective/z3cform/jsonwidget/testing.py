@@ -18,8 +18,10 @@ class CollectiveZ3CformJsonwidgetLayer(PloneSandboxLayer):
         # The z3c.autoinclude feature is disabled in the Plone fixture base
         # layer.
         import plone.restapi
+        import redturtle.reactbundle
 
         self.loadZCML(package=plone.restapi)
+        self.loadZCML(package=redturtle.reactbundle)
         self.loadZCML(package=collective.z3cform.jsonwidget)
 
     def setUpPloneSite(self, portal):
