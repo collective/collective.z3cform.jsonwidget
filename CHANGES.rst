@@ -2,7 +2,7 @@ Changelog
 =========
 
 
-2.0.2 (unreleased)
+2.0.2 (2026-10-22)
 ------------------
 
 - Added redturtle.reactbundle as dependency.
